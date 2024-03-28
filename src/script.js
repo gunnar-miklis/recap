@@ -1,3 +1,5 @@
+// session 1
+
 // NOTE: VARIABLES
 let flexibleVariable = false;
 flexibleVariable = true;
@@ -153,3 +155,94 @@ console.log(isOddOrEven(3));
 console.log(isOddOrEven(4));
 console.log(isOddOrEven(1));
 console.log(isOddOrEven(0));
+
+
+// session 2
+
+// NOTE: arrays
+const names = ['Helen', 'John', 'Peter', 'Merry'];
+console.log(names[0]); // 'Helen'
+
+names.pop(); // remove last entry: 'Helen', 'John', 'Peter'
+names.push('Merry'); // add after last entry: 'Helen', 'John', 'Peter', 'Merry'
+names.shift(); // remove first entry: ''John', 'Peter', 'Merry'
+names.unshift('Helen'); // add before first entry: 'Helen', 'John', 'Peter', 'Merry'
+names.splice(2, 1); // remove at start position (2), X (1) amount: 'Helen', 'John', 'Merry'
+names.splice(2, 0, 'Peter'); // remove nothing (0), add ('Peter') after start position (2): 'Helen', 'John', 'Peter', 'Merry'
+names.splice(3, 0, 'foo', 'bar'); // 'Helen', 'John', 'Peter', 'foo', 'bar', 'Merry'
+names.splice(3, 2); // 'Helen', 'John', 'Peter', 'Merry'
+
+const phrase = 'Hello World !';
+const words = phrase.split(' '); // [Hello, World, !]
+console.log(words[0]); // 'Hello'
+console.log(words.length); // 3
+const phraseAgain = words.join(' '); // 'Hello World !'
+
+const sentences =
+	"This is the first sentence. Then there's another. Here is the third. And last, number four.";
+const separatedSentences = sentences.split('. ');
+console.log(separatedSentences[0]);
+console.log(separatedSentences[1]);
+console.log(separatedSentences[2]);
+console.log(separatedSentences[3]);
+
+// iteration
+for (let i = 0; i < names.length; i++) {
+	console.log(names[i]);
+}
+for (const entry of names) {
+	console.log(entry);
+}
+names.forEach((entry) => {
+	console.log(entry);
+});
+names.forEach((entry, i) => {
+	console.log(`${i + 1}. ${entry}`); // '1. Helen', '2. John', '3. Peter', '4. Merry'
+});
+names.map((entry) => {
+	console.log(entry);
+});
+
+// filter
+const sentencesFiltered = separatedSentences.filter((sentence) =>
+	sentence.includes('is'),
+);
+console.log(sentencesFiltered); // ['This is the first sentence', 'Here is the third']
+const countNs = sentences
+	.split('')
+	.filter((character) => character === 'n').length;
+console.log(countNs); // 6
+
+// operation during iteration
+const sumArr = arr.reduce((sum, entry) => {
+	return sum + entry;
+}, 0);
+console.log(sumArr); // 1+2+3+4 = 10
+
+// pass test during iteration
+const randomNumbers = [45, 4, 9, 16, 25];
+function isNumberGreaterThanTen(inputNumber) {
+	return inputNumber > 10;
+}
+let result = null;
+result = randomNumbers.some((entry) => isNumberGreaterThanTen(entry));
+console.log(result); // true
+result = randomNumbers.every(isNumberGreaterThanTen);
+console.log(result); // false
+result = randomNumbers.filter((entry) => !isNumberGreaterThanTen(entry));
+console.log(result); // lesser than ten: 4, 9
+result = randomNumbers.filter(isNumberGreaterThanTen);
+console.log(result); // greater than ten: 45, 16, 25
+
+// spread operator
+const winter = ['dec', 'jan', 'feb'];
+const spring = ['mar', 'apr', 'may'];
+const winterAndSpring = [winter, spring];
+console.log(winterAndSpring.length); // 2
+console.log(winterAndSpring); // [ ['dec', 'jan', 'feb'], ['mar', 'apr', 'may'] ]
+const winterAndSpringSpreaded = [...winter, ...spring];
+console.log(winterAndSpringSpreaded.length); // 6
+console.log(winterAndSpringSpreaded); // ['dec', 'jan', 'feb', 'mar', 'apr', 'may']
+
+const highestNumber = Math.max(...randomNumbers); // 45
+const lowestNumber = Math.min(...randomNumbers); // 4
