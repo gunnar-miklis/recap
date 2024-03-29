@@ -13,7 +13,7 @@
 		"skipLibCheck": true,
 		
 		"rootDirs": ["src/"],
-		"target": "ES6",
+		"target": "ES2022",
 		"outDir": "dist",
 		"sourceMap": true,
 		"removeComments": true,
