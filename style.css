@@ -31,6 +31,20 @@ body {
 	min-height: 100vh;
 }
 /* Semantics / Structure */
+.nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+	box-shadow: 0 0 6px rgba(0,0,0,0.3);
+	border: 1px dotted red;
+	padding: var(--space);
+}
 .header,
 .section,
 .footer {
@@ -63,7 +77,7 @@ body {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	align-items: baseline;
+	align-items: start;
 }
 .footer > p {
 	font-size: smaller;
@@ -138,6 +152,19 @@ p[lang='de'] {
 	box-shadow: 1px 1px 8px #00000099;
 	color: rgba(240, 86, 86, 0.7);
 	cursor: pointer;
+}
+.flex-items {
+	width: 50px;
+	border: 2px solid transparent;
+	border-radius: var(--space);
+	background-color: rgba(240, 86, 86, 0.7);
+	box-shadow: 1px 1px 4px #00000033;
+	color: white;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	padding: var(--space);
+	margin: calc(var(--space) / 2);
 }
 
 /* Animation */
