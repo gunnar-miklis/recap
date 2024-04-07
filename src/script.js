@@ -219,9 +219,22 @@ names.forEach((entry) => {
 names.forEach((entry, i) => {
 	console.log(`${i + 1}. ${entry}`); // '1. Helen', '2. John', '3. Peter', '4. Merry'
 });
-names.map((entry) => {
-	console.log(entry);
+const namesInChar = names.map((name) => {
+	return name.split('');
 });
+console.log(namesInChar);
+const chars = namesInChar.flat();
+console.log(chars);
+// COMMENT: care! array mutation
+// COMMENT: care! array clone, copy reference/value/shallow/deep
+let charsCopy = Array.from(chars);
+const charsSorted = charsCopy.sort((a, b) => a.localeCompare(b));
+console.log(charsSorted);
+charsCopy = Array.from(chars);
+const charsSortedDescending = charsCopy.sort((a, b) => b.localeCompare(a));
+console.log(charsSortedDescending);
+const charsSortedReverse = charsSorted.reverse();
+console.log(charsSortedReverse);
 
 // filter
 const sentencesFiltered = separatedSentences.filter((sentence) =>
