@@ -79,6 +79,15 @@ body {
 	justify-content: space-between;
 	align-items: start;
 }
+#section-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	font-size: 4rem;
+	color: rgba(240, 86, 86, 0.7);
+	word-break: break-all;
+}
 .footer > p {
 	font-size: smaller;
 	font-style: italic;
@@ -147,12 +156,19 @@ p[lang='de'] {
 		background-color 0.2s ease-in-out,
 		box-shadow 0.2s ease-in-out;
 }
+.inverted-background {
+	background-color: rgba(15, 169, 169, 0.7);
+}
 .div:hover {
 	background-color: white;
 	box-shadow: 1px 1px 8px #00000099;
 	color: rgba(240, 86, 86, 0.7);
+}
+.inverted-background:hover {
+	color: rgba(15, 169, 169, 0.7);
 	cursor: pointer;
 }
+
 .flex-items {
 	width: 50px;
 	border: 2px solid transparent;

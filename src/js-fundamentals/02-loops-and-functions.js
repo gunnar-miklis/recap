@@ -70,3 +70,32 @@ console.log(isOddOrEven(3));
 console.log(isOddOrEven(4));
 console.log(isOddOrEven(1));
 console.log(isOddOrEven(0));
+
+// NOTE: async
+function randomTimer( timer ) {
+	if ( !timer ) timer = Math.floor(Math.random() * 3000 + 1000);
+
+	return new Promise((resolve, reject) => {
+		setTimeout(() => resolve(`Promise resolved after ${timer}s =>`), timer);
+	});
+
+}
+
+async function asyncCall() {
+	randomTimer()
+		.then((result) => {
+			console.log(result, 'asyncCall() done');
+		})
+		.catch((error) => console.error(error))
+		.finally(() => console.log('=> asyncCall() finished'));
+}
+asyncCall();
+
+(async () => {
+	try {
+		const result = await randomTimer( 1000 );
+		console.log(result, 'anonymous() done');
+	} catch (error) {
+		console.error(error);
+	}
+})();
