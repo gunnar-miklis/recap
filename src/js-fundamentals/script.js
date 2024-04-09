@@ -64,7 +64,29 @@ function handleToggle(toggle) {
 		toggleParagraph.innerText = toggle;
 		inputName.parentNode.parentNode.parentNode.insertBefore(
 			toggleSection,
-			document.querySelector('.section:nth-child(7)'),
+			document.querySelector('.section:nth-child(8)'),
 		);
 	}
 }
+
+// NOTE: fetch api
+async function fetchAPI(url) {
+	try {
+		const response = await fetch(url);
+		const responseJson = await response.json();
+
+		for (let i = 0; i < 5; i++) {
+			const imgUrl = responseJson[i].links.patch.small;
+			const img = document.createElement('img');
+			img.setAttribute('src', imgUrl);
+			fetchApiButton.parentNode.appendChild(img);
+		}
+
+		fetchApiButton.remove();
+	} catch (error) {
+		console.error(error);
+	}
+}
+const fetchApiButton = document.getElementById('fetch-api');
+fetchApiButton.onclick = () =>
+	fetchAPI('https://api.spacexdata.com/v4/launches');
