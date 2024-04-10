@@ -2,7 +2,7 @@
 
 -   **Client:** requesting and cosuming content / displaying content.
 -   **Server:** responding and providing content / making content accessible.
--   **Database:** (mainly) storing content.
+-   **Database:** (mainly) storing content. (reliable, efficient, scalable, concurrency(multiple clients), data abstractoin, query language)
 
 ## Request-Response Cycle: exchange pattern
 
