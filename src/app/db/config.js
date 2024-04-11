@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-export async function connectDB() {
-	const dbURI = 'mongodb://127.0.0.1/refresh-db';
+export default async function connectDB() {
+	const dbURI = 'mongodb://127.0.0.1/refresh-dev';
 
 	try {
 		mongoose.connect(dbURI);
@@ -10,13 +10,21 @@ export async function connectDB() {
 	}
 
 	const db = mongoose.connection;
-	db.once('open', () => {
-		console.log(`Database connected: ${dbURI}`);
-	});
-
 	db.on('error', (err) => {
 		console.error(`connection error: ${err}`);
 	});
-	
+	db.on('connected', () => {
+		console.log(`Database connected: ${dbURI}`);
+	});
+	db.on('disconnected', () => {
+		console.log(`Database disconnected.`);
+	});
+	process.on('SIGINT', () => {
+		db.close(() => {
+			console.log('Database connection closed.');
+			process.exit(0);
+		});
+	});
+
 	return;
 }
