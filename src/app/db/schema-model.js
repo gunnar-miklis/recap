@@ -6,7 +6,7 @@ const StudentSchema = new Schema(
 		name: {
 			type: String,
 			required: true,
-			unique: true
+			unique: true,
 		},
 		age: {
 			type: Number,
@@ -21,10 +21,6 @@ const StudentSchema = new Schema(
 		enrolled: {
 			type: Boolean,
 			default: false,
-		},
-		updated: {
-			type: Date,
-			default: Date.now,
 		},
 	},
 	{
