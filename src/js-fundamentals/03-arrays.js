@@ -28,7 +28,7 @@ console.log(separatedSentences[1]);
 console.log(separatedSentences[2]);
 console.log(separatedSentences[3]);
 
-// iteration
+// NOTE: iteration
 for (let i = 0; i < names.length; i++) {
 	console.log(names[i]);
 }
@@ -48,7 +48,7 @@ console.log(namesInChar);
 const chars = namesInChar.flat();
 console.log(chars);
 
-// sorting
+// NOTE: sorting
 // COMMENT: care! array mutation, mutable methods
 //	* .push()
 //	* .pop()
@@ -85,7 +85,7 @@ console.log(charsSortedDescending);
 const charsSortedReverse = charsSorted.reverse();
 console.log(charsSortedReverse);
 
-// filter
+// NOTE: filter
 const sentencesFiltered = separatedSentences.filter((sentence) =>
 	sentence.includes('is'),
 );
@@ -95,7 +95,7 @@ const countNs = sentences
 	.filter((character) => character === 'n').length;
 console.log(countNs); // 6
 
-// operation during iteration
+// NOTE: operation during iteration
 const sumArr = arr.reduce((sum, entry) => {
 	return sum + entry;
 }, 0);
@@ -116,7 +116,7 @@ console.log(result); // lesser than ten: 4, 9
 result = randomNumbers.filter(isNumberGreaterThanTen);
 console.log(result); // greater than ten: 45, 16, 25
 
-// spread operator
+// NOTE: spread operator
 const winter = ['dec', 'jan', 'feb'];
 const spring = ['mar', 'apr', 'may'];
 const winterAndSpring = [winter, spring];
@@ -128,3 +128,24 @@ console.log(winterAndSpringSpreaded); // ['dec', 'jan', 'feb', 'mar', 'apr', 'ma
 
 const highestNumber = Math.max(...randomNumbers); // 45
 const lowestNumber = Math.min(...randomNumbers); // 4
+
+// NOTE: destructuring
+const cities = [
+	['barcelona', 'es'],
+	['berlin', 'de'],
+	['paris', 'fr'],
+	['amsterdam', 'nl'],
+	['lisbon', 'pt'],
+	[['two'], ['dimensional'], ['data structure']],
+];
+const [city1] = cities;
+console.log(city1); // ['barcelona', 'es']
+const [, , city3] = cities;
+console.log(city3); // ['paris', 'fr']
+const [, [city2, language]] = cities;
+console.log(city2, language); // 'berlin', 'de'
+const [, , , , , nestedArray] = cities;
+console.log(nestedArray); // [['two'], ['dimensional'], ['data structure']]
+const [, , , , , [, [dimension], entry3]] = cities;
+console.log(dimension); // 'dimension'
+console.log(entry3); // [ 'data structure' ]

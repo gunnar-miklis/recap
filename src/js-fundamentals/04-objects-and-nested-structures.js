@@ -88,3 +88,28 @@ objMethods.increaseMoney(50);
 objMethods.decreaseMoney(20);
 console.log(objMethods.displayUserInfo()); // 'John Doe is 33 years old. He has 40 money'
 console.log(objMethods.turnover); // 30
+
+// NOTE: destructuring
+const person = {
+	name: {
+		firstName: 'Ana',
+		lastName: 'Smith',
+		fullName: function () {
+			return `${this.firstName} ${this.lastName}`;
+		},
+	},
+	age: 27,
+	adress: {
+		street: 'Long Str',
+		number: 123,
+		city: 'London',
+	},
+	profession: 'Developer',
+};
+const {
+	name,
+	age,
+	adress: { street, number, city },
+	profession: occupation,
+} = person;
+console.log(name.fullName(), age, `${street}. ${number}, ${city}`, occupation);
