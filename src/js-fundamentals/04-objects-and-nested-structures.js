@@ -27,17 +27,17 @@ console.log(objInArray[1].name); // Sara
 console.log(objInArray[3].age); // 24
 
 const arrayInObj = {
-	Cities: ['Berlin', 'Paris', 'London'],
-	Students: [
+	cities: ['Berlin', 'Paris', 'London'],
+	students: [
 		{ name: 'Bob', age: 17 },
 		{ name: 'Sara', age: 19 },
 		{ name: 'Ted', age: 22 },
 		{ name: 'Mari', age: 24 },
 	],
 };
-console.log(arrayInObj.Students[1].name); // Sara
-console.log(arrayInObj.Students[3].age); // 24
-console.log(arrayInObj.Cities[0]); // Berlin
+console.log(arrayInObj.students[1].name); // Sara
+console.log(arrayInObj.students[3].age); // 24
+console.log(arrayInObj.cities[0]); // Berlin
 
 const arrayInArray = [
 	['red', 'green', 'blue'],
@@ -113,3 +113,28 @@ const {
 	profession: occupation,
 } = person;
 console.log(name.fullName(), age, `${street}. ${number}, ${city}`, occupation);
+
+// destructure mixed nested data
+// const arrayInObj = {
+// 	cities: ['Berlin', 'Paris', 'London'],
+// 	students: [
+// 		{ name: 'Bob', age: 17 },
+// 		{ name: 'Sara', age: 19 },
+// 		{ name: 'Ted', age: 22 },
+// 		{ name: 'Mari', age: 24 },
+// 	],
+// };
+const {
+	cities,
+	cities: [berlin],
+	students: [
+		{ name: student1Name },
+		,
+		{ name: student3Name, age: student3Age },
+	],
+} = arrayInObj;
+console.log(cities); // ['Berlin', 'Paris', 'London']
+console.log(berlin); // 'Berlin'
+console.log(student1Name); // Bob
+console.log(student3Name); // Ted
+console.log(student3Age); // 22

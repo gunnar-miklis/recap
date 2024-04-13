@@ -29,47 +29,16 @@ const students = [
 	},
 ];
 
-// NOTE: Model-View-Controller (MVC), Response-Request-Cylce
-//	1. client -> REQUEST -> controller
-//	2. controller -> model -> db
-//	3. db -> model -> controller
-//	4. contoller -> view
-//	5. view -> RESPONSE -> client
-
 // NOTE: Object Document Mapper (ODM) to perform CRUD operations
 //	* Create: Model.create(),
 //	* Read: Model.find(), Model.findOne(), Model.findById()
 //	* Update: Mode.updatedOne(), Model.findOneAndUpdate(), Model.findByIdAndUpdate()
 //	* Delete: Model.deleteOne(), Model.findByIdAndDelete()
 
-// NOTE: READ filtered
-// MVC: This CONTROLLER, gets a "request" and...
-router.get('/students/enrolled', async (req, res, next) => {
-	try {
-		// MVC: ...asks for data from the MODEL...
-		const enrolledStudents = await StudentModel.find({ enrolled: true });
-		// MVC: ..."responds" by sending data to the VIEW (client).
-		res.status(200).json({ enrolledStudents });
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
-	}
-});
-
-// NOTE: READ with "count-utility"
-router.get('/students/count', async (req, res, next) => {
-	try {
-		const studentCount = await StudentModel.countDocuments()
-		res.status(200).json({
-			message: `There are currently ${studentCount} students in the database.`,
-		});
-	}catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
-	}
-})
+// TESTING: can use "Thunder Client" Extension to mock POST/PUT/DELETE requests
 
 // NOTE: CREATE one
+// => http://localhost:3000/api/students/new
 router.post('/students/new', async (req, res, next) => {
 	const newStudent = req.body;
 	const { name } = newStudent;
@@ -95,6 +64,7 @@ router.post('/students/new', async (req, res, next) => {
 });
 
 // NOTE: READ one
+// => http://localhost:3000/api/students/66198242d1212989b53ff763
 router.get('/students/:studentID', async (req, res, next) => {
 	const { studentID } = req.params;
 
@@ -132,19 +102,6 @@ router.delete('/students/:studentID', async (req, res, next) => {
 	try {
 		await StudentModel.findByIdAndDelete(studentID);
 		res.status(200).json({ message: `Student ${studentID} deleted.` });
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
-	}
-});
-
-// NOTE: READ all, and sort them by names
-router.get('/students', async (req, res, next) => {
-	try {
-		const students = await StudentModel.find().sort({ name: 1 });
-		res.status(200).json(
-			!students.length ? { message: 'Database is empty.' } : { students },
-		);
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ message: 'Internal Server Error' });

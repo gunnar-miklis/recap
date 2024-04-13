@@ -70,3 +70,19 @@ console.log(isOddOrEven(3));
 console.log(isOddOrEven(4));
 console.log(isOddOrEven(1));
 console.log(isOddOrEven(0));
+
+// NOTE: deconstructing function parameters
+const person = {
+	name: {
+		firstName: 'John',
+		lastName: 'Doe',
+	},
+	lang: ['en', 'de', 'pt'],
+};
+function displayPerson({
+	name: { firstName, lastName },
+	lang: [firstLanguage],
+}) {
+	return `The first language of ${firstName} ${lastName} is: ${firstLanguage.toUpperCase()}!`;
+}
+console.log(displayPerson(person)); // 'The first language of John Doe is: EN!'

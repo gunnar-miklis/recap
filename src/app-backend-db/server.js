@@ -15,8 +15,15 @@ app.get('/api', (req, res, next) => {
 	res.json({ message: 'Application running.' });
 });
 
-import mvcCrudRoutes from './routes/mvc-crud.js';
-app.use('/api', mvcCrudRoutes);
+//NOTE: handle routes
+import odmRoutes from './routes/odm-methods.js';
+app.use('/api', odmRoutes);
+
+import crudRoutes from './routes/crud.js';
+app.use('/api', crudRoutes);
+
+import mvcRoutes from './routes/mvc.js';
+app.use('/api', mvcRoutes);
 
 app.listen(PORT, () => {
 	console.log(`Server running at http://localhost:${PORT}`);
