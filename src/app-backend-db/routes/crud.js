@@ -3,6 +3,7 @@ const router = express.Router();
 import StudentModel from '../db/schema-model.js';
 
 // TESTING: with mock data, and some edge cases
+// TESTING: can use "Thunder Client" Extension to mock POST/PUT/DELETE requests
 const students = [
 	{
 		name: 'bob', // => first letter will be capitalized
@@ -35,8 +36,6 @@ const students = [
 //	* Update: Mode.updatedOne(), Model.findOneAndUpdate(), Model.findByIdAndUpdate()
 //	* Delete: Model.deleteOne(), Model.findByIdAndDelete()
 
-// TESTING: can use "Thunder Client" Extension to mock POST/PUT/DELETE requests
-
 // NOTE: CREATE one
 // => http://localhost:3000/api/students/new
 router.post('/students/new', async (req, res, next) => {
@@ -47,10 +46,9 @@ router.post('/students/new', async (req, res, next) => {
 		// check if already in database
 		const isAlreadyInDB = await StudentModel.find({ name });
 		if (isAlreadyInDB.length) {
-			res.status(400).json({
-				message: `${name} already in Database.`,
+			return res.status(400).json({
+				message: `${name} is already in Database.`,
 			});
-			return;
 		}
 
 		const createdStudent = await StudentModel.create(newStudent);
@@ -100,7 +98,10 @@ router.delete('/students/:studentID', async (req, res, next) => {
 	const { studentID } = req.params;
 
 	try {
-		await StudentModel.findByIdAndDelete(studentID);
+		const isDeleted = await StudentModel.findByIdAndDelete(studentID);
+		if ( !isDeleted ) {
+			return res.status(400).json({ message: `Student not found.` });
+		}
 		res.status(200).json({ message: `Student ${studentID} deleted.` });
 	} catch (err) {
 		console.error(err);

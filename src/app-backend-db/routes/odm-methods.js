@@ -36,8 +36,7 @@ router.get('/students/search', async (req, res, next) => {
 	// handle empty query
 	const { lang } = searchQuery;
 	if (!lang) {
-		res.status(400).json({ message: 'No search query provided.' });
-		return;
+		return res.status(400).json({ message: 'No search query provided.' });
 	}
 
 	try {
@@ -45,10 +44,9 @@ router.get('/students/search', async (req, res, next) => {
 
 		// handle "nothing found"
 		if (!searchResult.length) {
-			res.status(200).json({
+			return res.status(200).json({
 				message: 'None of the students knows this language.',
 			});
-			return;
 		}
 
 		res.status(200).json({ searchResult });
