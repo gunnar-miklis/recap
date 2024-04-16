@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import StudentModel from '../db/schema-model.js';
+import {StudentModel} from '../db/schema-model.js';
 
 // NOTE: Model-View-Controller (MVC), Response-Request-Cylce
 //	1. client -> REQUEST -> controller

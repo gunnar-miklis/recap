@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import StudentModel from '../db/schema-model.js';
+import {StudentModel} from '../db/schema-model.js';
 import CustomError from '../middleware/CustomError.js';
 
 // NOTE: READ with "count-utility"

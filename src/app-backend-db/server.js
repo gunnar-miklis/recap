@@ -25,6 +25,8 @@ import crudRoutes from './routes/crud.js';
 app.use('/api', crudRoutes);
 import mvcRoutes from './routes/mvc.js';
 app.use('/api', mvcRoutes);
+import modelRelationsRoutes from './routes/model-relations.js';
+app.use('/api', modelRelationsRoutes);
 
 // NOTE: handle errors
 import { logErrors } from './middleware/error-handling.js';
