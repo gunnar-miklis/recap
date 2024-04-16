@@ -21,12 +21,20 @@ app.get('/api', (req, res, next) => {
 //NOTE: handle routes
 import odmRoutes from './routes/odm-methods.js';
 app.use('/api', odmRoutes);
-
 import crudRoutes from './routes/crud.js';
 app.use('/api', crudRoutes);
-
 import mvcRoutes from './routes/mvc.js';
 app.use('/api', mvcRoutes);
+
+// NOTE: handle errors
+import { logErrors } from './middleware/error-handling.js';
+app.use(logErrors);
+import { invalidPath } from './middleware/error-handling.js';
+app.use(invalidPath);
+import { handleClientErrors } from './middleware/error-handling.js';
+app.use(handleClientErrors);
+import { handleErrors } from './middleware/error-handling.js';
+app.use(handleErrors);
 
 app.listen(PORT, () => {
 	console.log(`Server running at http://localhost:${PORT}`);

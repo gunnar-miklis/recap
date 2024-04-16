@@ -20,8 +20,7 @@ router.get('/students', async (req, res, next) => {
 			!students.length ? { message: 'Database is empty.' } : { students },
 		);
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 

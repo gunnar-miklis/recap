@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import StudentModel from '../db/schema-model.js';
+import CustomError from '../middleware/CustomError.js';
 
 // NOTE: READ with "count-utility"
 // => http://localhost:3000/api/students/count
@@ -8,11 +9,12 @@ router.get('/students/count', async (req, res, next) => {
 	try {
 		const studentCount = await StudentModel.countDocuments();
 		res.status(200).json({
-			message: `There are currently ${studentCount} students in the database.`,
+			message: `There are currently ${
+				studentCount || 0
+			} students in the database.`,
 		});
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
@@ -21,10 +23,14 @@ router.get('/students/count', async (req, res, next) => {
 router.get('/students/enrolled', async (req, res, next) => {
 	try {
 		const enrolledStudents = await StudentModel.find({ enrolled: true });
-		res.status(200).json({ enrolledStudents });
+		console.log('typeof enrolledStudents :>> ', enrolledStudents);
+		res.status(200).json(
+			enrolledStudents.length
+				? { enrolledStudents }
+				: { message: 'There are currently no students enrolled.' },
+		);
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
@@ -33,26 +39,31 @@ router.get('/students/enrolled', async (req, res, next) => {
 router.get('/students/search', async (req, res, next) => {
 	const searchQuery = req.query;
 
-	// handle empty query
-	const { lang } = searchQuery;
-	if (!lang) {
-		return res.status(400).json({ message: 'No search query provided.' });
-	}
-
 	try {
+		// handle empty query
+		const { lang } = searchQuery;
+		if (!lang) {
+			throw new CustomError(
+				'No search query provided',
+				400,
+				'try use: ?lang=en',
+			);
+		}
+
 		const searchResult = await StudentModel.find(searchQuery);
 
-		// handle "nothing found"
 		if (!searchResult.length) {
-			return res.status(200).json({
-				message: 'None of the students knows this language.',
-			});
+			throw new CustomError(
+				'None of the students knows this language',
+				200,
+				'try another language code',
+			);
 		}
 
 		res.status(200).json({ searchResult });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
+
 export default router;

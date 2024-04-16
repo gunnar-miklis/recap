@@ -1,34 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import StudentModel from '../db/schema-model.js';
-
-// TESTING: with mock data, and some edge cases
-// TESTING: can use "Thunder Client" Extension to mock POST/PUT/DELETE requests
-const students = [
-	{
-		name: 'bob', // => first letter will be capitalized
-		age: 27,
-		lang: ['en', 'de'],
-	},
-	{
-		name: 'mara',
-		age: 29,
-		lang: ['en', 'de', 'pt'],
-		enrolled: false,
-	},
-	{
-		name: 'HARU', // => will be capitalized
-		age: 26,
-		lang: ['en', 'jp'],
-		enrolled: true,
-	},
-	{
-		name: 'Ahmed',
-		age: 28,
-		lang: ['  EN      '], // => will be trimmed and lowercased and validated
-		enrolled: true,
-	},
-];
+import CustomError from '../middleware/CustomError.js';
 
 // NOTE: Object Document Mapper (ODM) to perform CRUD operations
 //	* Create: Model.create(),
@@ -44,20 +17,15 @@ router.post('/students/new', async (req, res, next) => {
 
 	try {
 		// check if already in database
-		const isAlreadyInDB = await StudentModel.find({ name });
-		if (isAlreadyInDB.length) {
-			return res.status(400).json({
-				message: `${name} is already in Database.`,
-			});
+		const isAlreadyInDB = await StudentModel.findOne({ name });
+		if (isAlreadyInDB) {
+			throw new CustomError(`${name} is already in Database.`, 400);
 		}
 
 		const createdStudent = await StudentModel.create(newStudent);
-		res.status(200).json({
-			message: `${createdStudent.name} added.`,
-		});
+		res.status(200).json({ message: `${createdStudent.name} added.` });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
@@ -68,10 +36,12 @@ router.get('/students/:studentID', async (req, res, next) => {
 
 	try {
 		const student = await StudentModel.findById(studentID);
+		if (!student) {
+			throw new CustomError('Student not found', 400, 'false id');
+		}
 		res.status(200).json({ student });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
@@ -86,10 +56,12 @@ router.put('/students/:studentID', async (req, res, next) => {
 			updates,
 			{ new: true },
 		);
+		if (!updatedStudent) {
+			throw new CustomError('Student not found', 400, 'false id');
+		}
 		res.status(200).json({ updatedStudent });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
@@ -99,13 +71,12 @@ router.delete('/students/:studentID', async (req, res, next) => {
 
 	try {
 		const isDeleted = await StudentModel.findByIdAndDelete(studentID);
-		if ( !isDeleted ) {
-			return res.status(400).json({ message: `Student not found.` });
+		if (!isDeleted) {
+			throw new CustomError('Student not found', 400, 'false id');
 		}
 		res.status(200).json({ message: `Student ${studentID} deleted.` });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ message: 'Internal Server Error' });
+		next(err);
 	}
 });
 
