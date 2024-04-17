@@ -89,7 +89,7 @@ const StudentSchema = new Schema(
 		},
 		campus: {
 			type: Schema.Types.ObjectId,
-			ref: 'City',
+			ref: 'Campus',
 		},
 	},
 	{
@@ -107,7 +107,7 @@ const CampusSchema = new Schema({
 	students: [
 		{
 			type: Schema.Types.ObjectId,
-			ref: 'Campus',
+			ref: 'Student',
 		},
 	],
 });

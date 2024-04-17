@@ -4,6 +4,7 @@ import {StudentModel} from '../db/schema-model.js';
 import CustomError from '../middleware/CustomError.js';
 
 // NOTE: READ with "count-utility"
+// .countDocuments()
 // => http://localhost:3000/api/students/count
 router.get('/students/count', async (req, res, next) => {
 	try {
@@ -19,11 +20,11 @@ router.get('/students/count', async (req, res, next) => {
 });
 
 // NOTE: READ filtered
+// .select()
 // => http://localhost:3000/api/students/enrolled
 router.get('/students/enrolled', async (req, res, next) => {
 	try {
-		const enrolledStudents = await StudentModel.find({ enrolled: true });
-		console.log('typeof enrolledStudents :>> ', enrolledStudents);
+		const enrolledStudents = await StudentModel.find({ enrolled: true }).select('name');
 		res.status(200).json(
 			enrolledStudents.length
 				? { enrolledStudents }
@@ -35,6 +36,7 @@ router.get('/students/enrolled', async (req, res, next) => {
 });
 
 // NOTE: READ by query
+// reqest query via GET
 // => http://localhost:3000/api/students/search?lang=de
 router.get('/students/search', async (req, res, next) => {
 	const searchQuery = req.query;

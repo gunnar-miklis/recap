@@ -20,10 +20,7 @@ export default async function connectDB() {
 		console.log(`Database disconnected.`);
 	});
 	process.on('SIGINT', () => {
-		db.close(() => {
-			console.log('Database connection closed.');
-			process.exit(0);
-		});
+		db.close();
 	});
 
 	return;

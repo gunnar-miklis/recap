@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import {StudentModel} from '../db/schema-model.js';
+import { CampusModel, StudentModel } from '../db/schema-model.js';
 import CustomError from '../middleware/CustomError.js';
 
 // NOTE: Object Document Mapper (ODM) to perform CRUD operations
@@ -8,6 +8,8 @@ import CustomError from '../middleware/CustomError.js';
 //	* Read: Model.find(), Model.findOne(), Model.findById()
 //	* Update: Mode.updatedOne(), Model.findOneAndUpdate(), Model.findByIdAndUpdate()
 //	* Delete: Model.deleteOne(), Model.findByIdAndDelete()
+
+// TESTING: can use "Thunder Client" Extension to mock GET/POST/PUT/DELETE requests
 
 // NOTE: CREATE one
 // => http://localhost:3000/api/students/new
@@ -35,9 +37,12 @@ router.get('/students/:studentID', async (req, res, next) => {
 	const { studentID } = req.params;
 
 	try {
-		const student = await StudentModel.findById(studentID);
+		const student = await StudentModel.findById(studentID).populate({
+			path: 'campus',
+			select: 'city',
+		});
 		if (!student) {
-			throw new CustomError('Student not found', 400, 'false id');
+			throw new CustomError('Student not found', 400, 'check if ID is correct');
 		}
 		res.status(200).json({ student });
 	} catch (err) {
@@ -57,7 +62,7 @@ router.put('/students/:studentID', async (req, res, next) => {
 			{ new: true },
 		);
 		if (!updatedStudent) {
-			throw new CustomError('Student not found', 400, 'false id');
+			throw new CustomError('Student not found', 400, 'check if ID is correct');
 		}
 		res.status(200).json({ updatedStudent });
 	} catch (err) {
@@ -72,7 +77,7 @@ router.delete('/students/:studentID', async (req, res, next) => {
 	try {
 		const isDeleted = await StudentModel.findByIdAndDelete(studentID);
 		if (!isDeleted) {
-			throw new CustomError('Student not found', 400, 'false id');
+			throw new CustomError('Student not found', 400, 'check if ID is correct');
 		}
 		res.status(200).json({ message: `Student ${studentID} deleted.` });
 	} catch (err) {
