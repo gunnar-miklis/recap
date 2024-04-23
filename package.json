@@ -1,18 +1,7 @@
 {
-	"name": "typescript-eslint-prettier",
+	"name": "refresh",
 	"packageManager": "yarn@3.6.3",
 	"type": "module",
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "latest",
-		"@typescript-eslint/parser": "latest",
-		"axios": "^1.6.8",
-		"bcryptjs": "^2.4.3",
-		"eslint": "^8.49.0",
-		"morgan": "^1.10.0",
-		"nodemon": "^3.1.0",
-		"prettier": "3.0.3",
-		"typescript": "^5.2.2"
-	},
 	"scripts": {
 		"dev": "tsc --watch",
 		"build:dev": "tsc --noEmit false",
@@ -20,11 +9,36 @@
 		"format:fix": "prettier --write src/**/*",
 		"lint:check": "eslint --ext .js,.jsx,.ts,.tsx src/**/*",
 		"lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix src/**/*",
-		"startAPI1": "nodemon ./src/backend-db/server.js",
-		"startAPI2": "nodemon ./src/password-encryption/server.js"
+		"startBackend1": "nodemon ./src/backend-db/server.js",
+		"startBackend2": "nodemon ./src/password-encryption/server.js",
+		"startFrontend1": "vite src/frontend/react-demo"
 	},
 	"dependencies": {
 		"express": "^4.19.2",
-		"mongoose": "^8.3.1"
+		"mongoose": "^8.3.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.66",
+		"@types/react-dom": "^18.2.22",
+		"@typescript-eslint/eslint-plugin": "latest",
+		"@typescript-eslint/parser": "latest",
+		"@vitejs/plugin-react": "^4.2.1",
+		"axios": "^1.6.8",
+		"bcryptjs": "^2.4.3",
+		"eslint": "^8.49.0",
+		"eslint-plugin-react": "^7.34.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.6",
+		"json-server": "^1.0.0-alpha.23",
+		"morgan": "^1.10.0",
+		"nodemon": "^3.1.0",
+		"prettier": "3.0.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.22.3",
+		"typescript": "^5.2.2",
+		"vite": "^5.2.10"
 	}
 }
