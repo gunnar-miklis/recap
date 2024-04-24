@@ -1,11 +1,11 @@
 import React from 'react';
 import './CardStyles.css';
 
-export default function CardContent({ content }) {
+export default function CardContent( props ) {
 
 	return (
 		<div className='card-content'>
-			<p>{content}</p>
+			{props.children}
 		</div>
 	);
 }
