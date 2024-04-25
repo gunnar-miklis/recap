@@ -20,7 +20,8 @@ function App() {
 			const apiPosts = await axios.get('http://localhost:8000/posts');
 			const allPosts = apiPosts.data;
 
-			// populate posts with author names (i believe json-server does not offer this functionality. also good coding practice anyway)
+			// populate posts with author names
+			// COMMENT: i believe json-server does not offer this functionality. also good coding practice anyway
 			const apiAuthors = await axios.get('http://localhost:8000/authors');
 			const allAuthors = apiAuthors.data;
 

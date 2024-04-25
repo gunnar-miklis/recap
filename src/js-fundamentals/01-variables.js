@@ -126,3 +126,38 @@ console.log(typeof num === 'string'); // false
 console.log(typeof num !== 'string'); // true
 
 export { num, arr, obj };
+
+// NOTE: conditional/logical operators
+const isUndefined = undefined; // falsy
+const isEmpty = ''; // falsy, but defined
+const hasValue = 'value'; // truthy
+
+// if "null" or "undefined" ?? return right side
+const result1 = isUndefined ?? 'do this';
+console.log(result1); // => 'do this'
+const result2 = isEmpty ?? 'this wont happen';
+console.log(result2); // => ''
+const result3 = hasValue ?? 'this wont happen';
+console.log(result3); // => 'value'
+
+// if truthy && return right side
+const result4 = isUndefined && 'this wont happen';
+console.log(result4); // => undefined
+const result5 = isEmpty && 'this wont happen';
+console.log(result5); // => ''
+const result6 = hasValue && 'do this';
+console.log(result6); // => 'do this'
+
+// if falsy (0, '', false, NaN, null, undefined) || return right side
+const result7 = isUndefined || 'do this';
+console.log(result7); // => 'do this'
+const result8 = isEmpty || 'do this';
+console.log(result8); // => 'do this'
+const result9 = hasValue || 'this wont happen';
+console.log(result9); // => 'value'
+
+// ternary
+console.log(isUndefined ? 'this wont happen' : 'do this'); // => 'do this'
+console.log(isEmpty ? 'this wont happen' : 'do this'); // => 'do this'
+console.log(hasValue ? 'do this' : 'this wont happen'); // => 'do this'
+

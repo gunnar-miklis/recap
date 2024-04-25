@@ -1,10 +1,26 @@
 import React from 'react';
 import './CardStyles.css';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
-export default function CardHeader({ id, title, date, authors, isRead, toggleIsRead }) {
-	if (!authors.length) return <p>Loading ...</p>;
+export default function CardHeader({
+	id,
+	title,
+	date,
+	authors,
+	isRead,
+	toggleIsRead,
+}) {
+	const [formatedDate, setFormatedDate] = useState(date);
+	useEffect(() => {
+		const d = new Date(date);
+		const fd = d.toLocaleString('en-DE', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+		});
+		setFormatedDate(fd);
+	}, []);
+
 	return (
 		<div className='flex-col'>
 			<div className='flex-row flex-between'>
@@ -23,13 +39,13 @@ export default function CardHeader({ id, title, date, authors, isRead, toggleIsR
 						{isRead ? '✔️' : '✖️'}
 					</span>
 				</h3>
-				<p className='card-date'>{date}</p>
+				<p className='card-date'>{formatedDate}</p>
 			</div>
 			<p className='card-authors'>
 				written by{' '}
 				{/* place comma after each author logic
 					* when 1 author: no comma
-					* when 2 or more: place coma after each, but the last...
+					* when 2 or more: place coma after each, but not the last...
 						... instead:  "author1, author2, author3, " => do: "author1, author2, author3" */}
 				{authors.length > 1 ? (
 					authors.map((author, i) => (
