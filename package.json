@@ -9,10 +9,10 @@
 		"format:fix": "prettier --write src/**/*",
 		"lint:check": "eslint --ext .js,.jsx,.ts,.tsx src/**/*",
 		"lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix src/**/*",
-		"startBackend1": "nodemon ./src/backend-db/server.js",
-		"startBackend2": "nodemon ./src/password-encryption/server.js",
+		"startBackend1": "nodemon ./src/backend/crud-db/server.js",
+		"startBackend2": "nodemon ./src/backend/pw-encryption/server.js",
 		"startFrontend1": "vite src/frontend/react-demo",
-		"startJsonServer": "json-server --watch src/json-server/fake-api-blog.json --port 8000"
+		"startJsonServer": "json-server --watch src/backend/json-server-fake-api/fake-blog.json --port 8000"
 	},
 	"dependencies": {
 		"express": "^4.19.2",
