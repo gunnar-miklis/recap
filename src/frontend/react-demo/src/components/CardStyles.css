@@ -24,3 +24,18 @@
 	margin-bottom: 0;
 	color: gray;
 }
+.card-content {
+	white-space: pre-line;
+}
+.card-delete {
+	text-align: right;
+	color: gray;
+	font-size: small;
+	font-weight: normal;
+	cursor: pointer;
+}
+.card-delete:hover {
+	color: #747bff;
+	font-weight: 500;
+	text-decoration: underline;
+}

@@ -9,6 +9,7 @@ export default function CardHeader({
 	authors,
 	isRead,
 	toggleIsRead,
+	deletePost,
 }) {
 	const [formatedDate, setFormatedDate] = useState(date);
 	useEffect(() => {
@@ -39,8 +40,14 @@ export default function CardHeader({
 						{isRead ? '✔️' : '✖️'}
 					</span>
 				</h3>
-				<p className='card-date'>{formatedDate}</p>
+				<div className='flex-col card-date'>
+					<span>{formatedDate}</span>
+					<a className='card-delete' onClick={() => deletePost(id)}>
+						Delete
+					</a>
+				</div>
 			</div>
+
 			<p className='card-authors'>
 				written by{' '}
 				{/* place comma after each author logic
