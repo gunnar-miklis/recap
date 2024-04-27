@@ -1,6 +1,6 @@
 import React from 'react';
-import './CardStyles.css';
 import { useState, useEffect } from 'react';
+import './CardStyles.css';
 
 export default function CardHeader({
 	id,

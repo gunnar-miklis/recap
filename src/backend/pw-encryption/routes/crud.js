@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 const saltRounds = 10;
 
 // NOTE: CREATE one
-router.post('/users/new', async (req, res, next) => {
+router.post('/users', async (req, res, next) => {
 	const { username, password: plainPassword } = req.body;
 
 	try {

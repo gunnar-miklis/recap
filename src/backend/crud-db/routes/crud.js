@@ -13,7 +13,7 @@ import CustomError from '../middleware/CustomError.js';
 
 // NOTE: CREATE one
 // => http://localhost:3000/api/students/new
-router.post('/students/new', async (req, res, next) => {
+router.post('/students', async (req, res, next) => {
 	const newStudent = req.body;
 	const { name } = newStudent;
 

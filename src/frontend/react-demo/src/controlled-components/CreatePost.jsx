@@ -1,6 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import { useState } from 'react';
+import axios from 'axios';
+
+// COMMENT: controlled components
+//	* "A controlled component is one where the data, typically input form data, is handled by the React state mechanism. Rather than allowing the DOM to manage this data, React takes charge, ensuring that data handling and changes are consistent with the React paradigm." 
+//	* Use cases: values and interactions, real-time validation, complex forms.
 
 export default function CreatePost({
 	authors,
@@ -18,16 +22,17 @@ export default function CreatePost({
 		const today = now.toLocaleDateString();
 
 		try {
-			await axios.post(`http://localhost:8000/posts`, {
+			const newPost = {
 				id: `b${postsCount + 1}`,
 				title,
 				authors: selectedAuthors,
 				date: today,
 				content,
 				isRead: false,
-			});
-			await toggleIsVisible();
-			await getPosts('success', 'New post created!');
+			};
+			await axios.post(`http://localhost:8000/posts`, newPost);
+			toggleIsVisible();
+			getPosts('success', 'New post created!');
 		} catch (error) {
 			console.error();
 		}

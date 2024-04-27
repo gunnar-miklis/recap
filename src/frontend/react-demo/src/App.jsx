@@ -1,15 +1,38 @@
-import './App.css';
-import './components/CardStyles.css';
-import Card from './components/Card';
-import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import Card from './components/Card';
 import CreatePost from './controlled-components/CreatePost';
 import StatusMessage from './components/StatusMessage';
+import './App.css';
+import './components/CardStyles.css';
 
 // COMMENT: props vs state
 //	* props: are read-only, come from "outside" (parent component)
 //	* state: are read-write, belong to the component itself
 //	* on props AND state updates => component gets re-rendered
+
+// COMMENT: reacts flow of information: "data down, actions up"
+//	* pass data down, with props
+//	* lift data up, with (callback) functions
+
+// COMMENT: lifecycle
+//	* Mount: inital render of a component / component creation (to DOM)
+//	* Updating: re-render on changes of state or props
+//	* Unmount: remove/destroy component (from DOM), cleanup: cancel request, timers, etc
+//	* (side) effects: run some code at particular times during a lifecycle phase
+//		* Examples: data fetching, subscription (pending requests), start timer, manually change DOM
+//		* useEffect(), (once) during mount: useEffect(() => {}, [])
+//		* useEffect(), during updating: useEffect(()=>{}, [dependency])
+//		* useEffect(), (cleanup) during unmount: useEffect(()=>{return()=>clearInterval(id)},[])
+
+// COMMENT: hooks
+//	* interfere/interact with current lifecycle, "functions that let you hook into react state/lifecylce"
+//	* only call on top-level (not inside loops/conditions/functions)
+//	* useState(): creates an "state vairable" which updates the component on change.
+//	* useContext(): creates a state which is accessible from all components (eg. dark/light theme)
+//	* useRef(): can store a mutable value, which does not re-render the view on update. can also store DOM elements. (similar to useState() but does not trigger re-render)
+//	* useEffect(): function which gets called every time the view gets mounted or when the state inside [dependency] changes.
+//	* useLayoutEffect(): similar to useEffect(), but instead gets called before view gets mounted, but can hurt performance (load items instantly upon screen display, without it causing a small blink/flash)
 
 function App() {
 	const [posts, setPosts] = useState([]);
@@ -174,8 +197,8 @@ function App() {
 					posts.map((post) => (
 						<Card
 							key={post.id}
-							post={post} // COMMENT: pass data down, with props
-							toggleIsRead={toggleIsRead} // COMMENT: lift data up, with functions
+							post={post} // COMMENT: pass data down, props
+							toggleIsRead={toggleIsRead} // COMMENT: lift data up, functions
 							deletePost={deletePost}
 						/>
 					))}
