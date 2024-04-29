@@ -12,6 +12,7 @@
 		"startBackend1": "nodemon ./src/backend/crud-db/server.js",
 		"startBackend2": "nodemon ./src/backend/pw-encryption/server.js",
 		"startFrontend1": "vite src/frontend/react-demo",
+		"startFrontend2": "vite src/frontend/routing",
 		"startJsonServer": "json-server --watch src/backend/json-server-fake-api/fake-blog.json --port 8000"
 	},
 	"dependencies": {
