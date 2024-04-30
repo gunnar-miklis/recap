@@ -10,7 +10,7 @@
 	padding: 0.6em;
 	border-bottom: 2px solid gray;
 }
-.selected {
+.active {
 	text-decoration: underline;
 	font-weight: 900;
 	font-size: x-large;

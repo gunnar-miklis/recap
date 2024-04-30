@@ -1,0 +1,30 @@
+[
+	{
+		"id": "p1",
+		"name": "1. Project",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isFinished": false,
+		"imageUrl": "https://www.mozilla.org/media/img/firefox/developer/feature-responsive-mode.7b90657adbdb.svg"
+	},
+	{
+		"id": "p2",
+		"name": "2. Project",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isFinished": true,
+		"imageUrl": "https://www.mozilla.org/media/img/firefox/developer/feature-responsive-mode.7b90657adbdb.svg"
+	},
+	{
+		"id": "p3",
+		"name": "3. Project",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isFinished": true,
+		"imageUrl": "https://www.mozilla.org/media/img/firefox/developer/feature-responsive-mode.7b90657adbdb.svg"
+	},
+	{
+		"id": "p4",
+		"name": "4. Project",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isFinished": false,
+		"imageUrl": "https://www.mozilla.org/media/img/firefox/developer/feature-responsive-mode.7b90657adbdb.svg"
+	}
+]

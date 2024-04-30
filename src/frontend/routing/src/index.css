@@ -41,10 +41,44 @@ button {
 	font-size: 1em;
 	font-weight: 500;
 	font-family: inherit;
-	background-color: #f9f9f9;;
+	background-color: #f9f9f9;
 	cursor: pointer;
 	transition: border-color 0.25s;
 }
 button:hover {
 	border-color: #646cff;
+}
+
+.card-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	max-width: 860px;
+}
+.card {
+	max-width: 320px;
+	text-align: justify;
+	margin: 0.6em;
+	padding: 0.6em 1.2em;
+
+	color: #242424;
+	font-size: 1em;
+	font-weight: normal;
+
+	border-radius: 8px;
+	border: 2px solid transparent;
+	background-color: #f9f9f9;
+	cursor: pointer;
+	transition: border-color 0.25s;
+}
+.card:hover {
+	border-color: #646cff;
+}
+
+.navigation {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin: 2.4em auto;
+	max-width: 50%;
 }
