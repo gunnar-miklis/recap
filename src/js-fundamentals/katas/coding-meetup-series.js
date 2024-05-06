@@ -350,3 +350,29 @@ console.log(countLanguages(list8));
 console.log(countLanguages2(list8));
 console.log(countLanguages3(list8));
 console.log(countLanguages4(list8));
+
+// https://www.codewars.com/kata/582ba36cc1901399a70005fc/train/javascript
+const list9 = [
+	{
+		firstName: 'Maria',
+		lastName: 'Y.',
+		country: 'Cyprus',
+		continent: 'Europe',
+		age: 30,
+		language: 'Java',
+	},
+	{
+		firstName: 'Victoria',
+		lastName: 'T.',
+		country: 'Puerto Rico',
+		continent: 'Americas',
+		age: 70,
+		language: 'Python',
+	},
+];
+function getAverageAge(list) {
+	return Math.round(
+		list.reduce((sum, developer) => sum + developer.age, 0) / list.length,
+	);
+}
+console.log(getAverageAge(list9));

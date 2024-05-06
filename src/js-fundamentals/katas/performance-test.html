@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>performance test</title>
+	</head>
+	<body>
+		<h1>performance test</h1>
+		<script type="text/javascript">
+			// TESTING: performance
+			const list8 = [
+				{
+					firstName: 'Noah',
+					lastName: 'M.',
+					country: 'Switzerland',
+					continent: 'Europe',
+					age: 19,
+					language: 'C',
+				},
+				{
+					firstName: 'Anna',
+					lastName: 'R.',
+					country: 'Liechtenstein',
+					continent: 'Europe',
+					age: 52,
+					language: 'JavaScript',
+				},
+				{
+					firstName: 'Ramon',
+					lastName: 'R.',
+					country: 'Paraguay',
+					continent: 'Americas',
+					age: 29,
+					language: 'Ruby',
+				},
+				{
+					firstName: 'George',
+					lastName: 'B.',
+					country: 'England',
+					continent: 'Europe',
+					age: 81,
+					language: 'C',
+				},
+			];
+			// COMMENT: assume to be slowest
+			function countLanguages(list) {
+				return list.reduce((obj, developer) => {
+					const lang = developer.language;
+					obj[lang] = obj[lang] ? obj[lang] + 1 : 1;
+					return obj;
+				}, {});
+			}
+			function countLanguages3(list) {
+				return list.reduce((obj, developer) => {
+					const lang = developer.language;
+					obj[lang] = (obj[lang] || 0) + 1;
+					return obj;
+				}, {});
+			}
+			function countLanguages2(list) {
+				const obj = {};
+				list.forEach((developer) => {
+					const lang = developer.language;
+					obj[lang] = obj[lang] ? obj[lang] + 1 : 1;
+				});
+				return obj;
+			}
+			// COMMENT: assume to be fastest
+			function countLanguages4(list) {
+				const obj = {};
+				for (const developer of list) {
+					const lang = developer.language;
+					const currCount = obj[lang] ?? 0;
+					obj[lang] = currCount + 1;
+				}
+				return obj;
+			}
+
+			// TESTING: .reduce() => 0.156ms
+			// COMMENT: slowest
+			console.time('Func 1');
+			countLanguages(list8);
+			console.timeEnd('Func 1');
+
+			// TESTING: .reduce() => 0.115ms
+			console.time('Func 2');
+			countLanguages2(list8);
+			console.timeEnd('Func 2');
+
+			// TESTING: .foreach() => 0.106ms
+			// COMMENT: fastest
+			console.time('Func 3');
+			countLanguages3(list8);
+			console.timeEnd('Func 3');
+
+			// TESTING: for .. of => 0.113ms
+			console.time('Func 4');
+			countLanguages4(list8);
+			console.timeEnd('Func 4');
+		</script>
+	</body>
+</html>
