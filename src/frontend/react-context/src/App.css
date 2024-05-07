@@ -1,0 +1,25 @@
+#root {
+	width: 100%;
+	padding: 2.4rem;
+}
+
+.theme-switch {
+	position: fixed;
+	top: 1.2em;
+	right: 1.2em;
+}
+
+.logo {
+	height: 6em;
+	padding: 1.5em 0;
+	will-change: filter;
+	transition: filter 300ms;
+}
+.logo:hover {
+	filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.text {
+	color: #888;
+	max-width: 720px;
+}

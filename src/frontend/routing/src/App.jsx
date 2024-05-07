@@ -5,6 +5,12 @@ import Navbar from './components/Navbar.jsx';
 import Error from './pages/Error.jsx';
 import './App.css';
 
+// COMMENT: Prop Drilling vs React.useContext()
+//	* "prop drilling": passing down props several levels
+//	* for a simple project like this: dynamically pass props to components
+//	* "useContext": is react's built-in state management solution to pass data deeply to any component
+//	* considered sharing data "global". usecases: (light/dark) theme, (en/de) language, (user sign in/out) authentication
+
 export default function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -17,8 +23,7 @@ export default function App() {
 						<Route
 							key={route.name}
 							path={route.path}
-							// COMMENT: usually using React.useContext()
-							//	* but for this simple case: dynamically pass props to components rendered within a loop or iteration
+							// React.cloneElement() renders each given element (route.element <About/>) new (create a new element) but with new attributes (isLoggedIn, toggleIsLoggedIn)
 							element={React.cloneElement(route.element, {
 								isLoggedIn: isLoggedIn,
 								toggleIsLoggedIn: () =>
