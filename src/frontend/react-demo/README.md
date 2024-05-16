@@ -30,11 +30,15 @@
 -   pass down: props
 -   lift up: callbacks
 
-### lifecycle
+### component lifecycle
 
--   mount, update, unmount
--   side effects
+1. mount, initialization: create and insert into DOM
+2. update, re-rendering due to changes (props/state)
+3. unmount, destruction: remove from DOM
+
 -   **hooks**: useState(), useEffect(), useRef()
+-   state: represents the internal data specific to a component
+-   side effects: functional operations outside the regular flow, performed without blocking the UI (fetching api)
 
 ### custom toast bar component
 

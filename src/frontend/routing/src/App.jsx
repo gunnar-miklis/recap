@@ -23,7 +23,7 @@ export default function App() {
 						<Route
 							key={route.name}
 							path={route.path}
-							// React.cloneElement() renders each given element (route.element <About/>) new (create a new element) but with new attributes (isLoggedIn, toggleIsLoggedIn)
+							// COMMENT: React.cloneElement() renders each given element (route.element <About/>) new (create a new element) but with new attributes (isLoggedIn, toggleIsLoggedIn)
 							element={React.cloneElement(route.element, {
 								isLoggedIn: isLoggedIn,
 								toggleIsLoggedIn: () =>
