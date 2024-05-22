@@ -376,3 +376,59 @@ function getAverageAge(list) {
 	);
 }
 console.log(getAverageAge(list9));
+
+// https://www.codewars.com/kata/583952fbc23341c7180002fd/train/javascript
+const list10 = [
+	{
+		firstName: 'Noah',
+		lastName: 'M.',
+		country: 'Switzerland',
+		continent: 'Europe',
+		age: 19,
+		language: 'C',
+		meal: 'vegetarian',
+	},
+	{
+		firstName: 'Anna',
+		lastName: 'R.',
+		country: 'Liechtenstein',
+		continent: 'Europe',
+		age: 52,
+		language: 'JavaScript',
+		meal: 'standard',
+	},
+	{
+		firstName: 'Ramona',
+		lastName: 'R.',
+		country: 'Paraguay',
+		continent: 'Americas',
+		age: 29,
+		language: 'Ruby',
+		meal: 'vegan',
+	},
+	{
+		firstName: 'George',
+		lastName: 'B.',
+		country: 'England',
+		continent: 'Europe',
+		age: 81,
+		language: 'C',
+		meal: 'vegetarian',
+	},
+];
+function orderFood(list) {
+	const options = {};
+	for (const { meal } of list) {
+		if (!options[meal]) options[meal] = 1;
+		else options[meal] += 1;
+	}
+	return options;
+}
+console.log(orderFood(list10));
+function orderFood2(list) {
+	return list.reduce((options, { meal }) => {
+		options[meal] = !options[meal] ? 1 : options[meal] + 1;
+		return options;
+	}, {});
+}
+console.log(orderFood2(list10));
