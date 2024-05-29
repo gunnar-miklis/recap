@@ -27,6 +27,9 @@ html {
 	color: var(--dark-color);
 	background-color: var(--dark-bg);
 }
+::selection {
+	background-color: #4db6ac88;
+}
 
 /* Generics */
 h1 {
@@ -52,9 +55,11 @@ a {
 }
 .app-container {
 	width: var(--app-width);
+	padding: 1rem;
 	padding-top: 100px;
 	display: flex;
 }
+
 .nav {
 	position: fixed;
 	top: 0;
@@ -72,14 +77,20 @@ a {
 	align-items: center;
 }
 .nav-link {
-	font-weight: 300;
-	font-size: 1.3rem;
+	font-weight: 400;
+	font-size: 1.1rem;
 	text-decoration: none;
 }
-.nav-active {
-	font-size: 1.5rem;
-	font-weight: 600;
+.nav-link span {
+	font-size: 1rem;
+	text-shadow: 0 0 4px #00000088;
 }
+.nav-active {
+	font-size: 1.3rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
 .theme-switch {
 	border-radius: 8px;
 	border: 2px solid transparent;
@@ -90,9 +101,52 @@ a {
 .theme-switch:hover {
 	border-color: var(--accent);
 }
-.home {
+.lang-switch {
+	border-radius: 8px;
+	border: 2px solid transparent;
+	padding: 10px;
+	font-weight: 500;
+	cursor: pointer;
 }
-.about {
+.lang-switch:hover {
+	border-color: var(--accent);
 }
-.user {
+.lang-active {
+	color: var(--accent) !important;
+	font-weight: bold;
+}
+
+.form {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 0.8rem;
+}
+.form .input-wrapper {
+	display: flex;
+	flex-flow: column nowrap;
+}
+.form .input {
+	font-size: 1rem;
+	padding: 0.3rem;
+	margin: 0.2rem 0;
+	outline: none;
+	background-color: transparent;
+	border: 2px solid transparent;
+	border-bottom: 2px solid var(--accent);
+	border-radius: 0.1rem;
+	transition: background-color 0.3s;
+}
+.form label {
+	font-size: 1rem;
+}
+.button {
+	border: none;
+	background-color: transparent;
+	font-weight: 600;
+	font-size: 1.1rem;
+	text-decoration: underline;
+	cursor: pointer;
+	text-align: start;
+	padding: 0.3rem 0;
+	margin: 0.2rem 0;
 }

@@ -1,0 +1,80 @@
+/* NOTE: LIGHT THME */
+.light.app {
+	color: var(--light-text);
+	background-color: var(--light-bg);
+	transition:
+		color 0.7s,
+		background-color 0.7s;
+}
+.light a,
+.light button {
+	color: var(--accent);
+}
+.light a:hover,
+.light button:hover {
+	color: var(--light-accent);
+}
+.light.theme-switch,
+.light.lang-switch,
+.light.nav {
+	color: var(--light-text);
+	background-color: var(--light-nav-bg);
+	transition: background-color 0.7s;
+}
+.light.nav-link {
+	color: var(--light-text);
+	transition: color 0.3s;
+}
+.light.nav-active {
+	color: var(--accent);
+}
+.light.input {
+	color: var(--light-text);
+}
+.light.input:hover,
+.light.input:focus {
+	background-color: var(--light-nav-bg);
+}
+.light.input::placeholder {
+	color: var(--dark-nav-bg);
+}
+
+/* NOTE: DARK THEME */
+.dark.app {
+	color: var(--dark-text);
+	background-color: var(--dark-bg);
+	transition:
+		color 0.7s,
+		background-color 0.7s;
+}
+.dark a,
+.dark button {
+	color: var(--accent);
+}
+.dark a:hover,
+.dark button:hover {
+	color: var(--light-accent);
+}
+.dark.theme-switch,
+.dark.lang-switch,
+.dark.nav {
+	color: var(--dark-text);
+	background-color: var(--dark-nav-bg);
+	transition: background-color 0.7s;
+}
+.dark.nav-link {
+	color: var(--dark-text);
+}
+.dark.nav-active {
+	color: var(--accent);
+}
+.dark.input {
+	color: var(--dark-text);
+}
+.dark.input:hover,
+.dark.input:focus {
+	background-color: var(--dark-nav-bg);
+}
+.dark.input::placeholder {
+	color: var(--light-nav-bg);
+}

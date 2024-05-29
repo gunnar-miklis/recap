@@ -1,38 +1,18 @@
 import React from 'react';
-import { useThemeContext } from '../context/ThemeContext';
+import { useThemeContext } from '../context/theme/ThemeContext';
+import { useLanguageContext } from '../context/language/LanguageContext';
 
 export default function About() {
 	const { theme } = useThemeContext();
-	
+	const { currentLanguage: lang } = useLanguageContext();
+
 	return (
 		<div className={'about ' + theme}>
-			<h1>About</h1>
-			<h3>TODO: language context</h3>
+			<h1>{lang.about.title}</h1>
+			<h3>{lang.about.heading}</h3>
 
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-				sit amet lectus lorem. Ut quis commodo odio. Vestibulum vehicula
-				ex sem, dignissim lobortis erat feugiat quis. Maecenas blandit
-				porttitor faucibus. Vivamus blandit vel nunc sed aliquet. Nunc
-				pretium est felis, in cursus mi convallis a. Nulla lobortis
-				ornare lorem in rhoncus. Nam eros nunc, iaculis id nibh eget,
-				laoreet suscipit libero. In rhoncus nibh lacus, in consectetur
-				felis egestas a. Donec vulputate rutrum vestibulum. Aliquam in
-				pretium augue. Curabitur malesuada ante volutpat aliquam
-				interdum.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-				sit amet lectus lorem. Ut quis commodo odio. Vestibulum vehicula
-				ex sem, dignissim lobortis erat feugiat quis. Maecenas blandit
-				porttitor faucibus. Vivamus blandit vel nunc sed aliquet. Nunc
-				pretium est felis, in cursus mi convallis a. Nulla lobortis
-				ornare lorem in rhoncus. Nam eros nunc, iaculis id nibh eget,
-				laoreet suscipit libero. In rhoncus nibh lacus, in consectetur
-				felis egestas a. Donec vulputate rutrum vestibulum. Aliquam in
-				pretium augue. Curabitur malesuada ante volutpat aliquam
-				interdum.
-			</p>
+			<p>{lang.about.text.p1}</p>
+			<p>{lang.about.text.p2}</p>
 		</div>
 	);
 }

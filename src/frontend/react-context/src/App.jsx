@@ -1,7 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
+import { useThemeContext } from './context/theme/ThemeContext';
 import Navbar from './components/Navbar';
-import { routes } from './consts/routes';
-import { useThemeContext } from './context/ThemeContext';
+import Home from './pages/Home';
+import User from './pages/User';
+import About from './pages/About';
 
 function App() {
 	const { theme } = useThemeContext();
@@ -9,15 +11,11 @@ function App() {
 	return (
 		<div className={'app ' + theme}>
 			<div className={'app-container'}>
-				<Navbar routes={routes} />
+				<Navbar />
 				<Routes>
-					{routes.map((route) => (
-						<Route
-							key={route.name}
-							path={route.path}
-							element={route.element}
-						/>
-					))}
+					<Route path='/home' element={<Home />} />
+					<Route path='/user' element={<User />} />
+					<Route path='/about' element={<About />} />
 				</Routes>
 			</div>
 		</div>
