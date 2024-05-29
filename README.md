@@ -23,7 +23,7 @@ Practice. Learn. Improve.
 	- component lifecycle: state, side-effects, hooks
 	- flow of information: props/callbacks (pass down/lift up)
 	- routing, navigation
-	- TODO: context
+	- context (theme, language, auth)
 
 ## full-stack
 - TODO: app
