@@ -23,7 +23,8 @@
   "plugins": ["react", "react-refresh", "react-hooks", "prettier"],
   "rules": {
     "prettier/prettier": ["warn"],
-    "no-console": "off"
+    "no-console": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
