@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger('dev'));
 
 app.get('/api', (req, res, next) => {
-	res.status(200).json({ message: 'Application running.' });
+  res.status(200).json({ message: 'Application running.' });
 });
 
 connectDB();
@@ -20,9 +20,9 @@ app.use('/api', crudRoutes);
 import authRoutes from './routes/authentication.js';
 app.use('/api', authRoutes);
 
-import handleErrors from './mw/error-handling.js'
+import handleErrors from './mw/error-handling.js';
 app.use(handleErrors);
 
 app.listen(PORT, () => {
-	console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

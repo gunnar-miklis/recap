@@ -26,31 +26,31 @@
 
 // NOTE: classes
 class Rectangle {
-	constructor(width, height, color) {
-		this.width = width;
-		this.height = height;
-		this.color = color;
-	}
+  constructor(width, height, color) {
+    this.width = width;
+    this.height = height;
+    this.color = color;
+  }
 
-	getDimensions() {
-		return `w:${this.width}, h:${this.height}`;
-	}
-	setDimensions(w, h) {
-		this.width = w;
-		this.height = h;
-	}
+  getDimensions() {
+    return `w:${this.width}, h:${this.height}`;
+  }
+  setDimensions(w, h) {
+    this.width = w;
+    this.height = h;
+  }
 
-	getColor() {
-		return this.color;
-	}
-	setColor(c) {
-		this.color = c;
-	}
+  getColor() {
+    return this.color;
+  }
+  setColor(c) {
+    this.color = c;
+  }
 
-	// COMMENT: abstraction (abstract method, calculation is "hidden" for the user)
-	calculateArea() {
-		return this.width * this.height;
-	}
+  // COMMENT: abstraction (abstract method, calculation is "hidden" for the user)
+  calculateArea() {
+    return this.width * this.height;
+  }
 }
 
 const rectangle1 = new Rectangle(10, 20, 'red');
@@ -69,11 +69,11 @@ console.log(rectangle2.getDimensions()); // w:15, h:15
 // COMMENT: inheritance
 // COMMENT: abstraction (Rectangle is the abstract class while Square represents a define class)
 class Square extends Rectangle {
-	constructor(side, color) {
-		super(side, side, color);
-		this.width = side;
-		this.height = side;
-	}
+  constructor(side, color) {
+    super(side, side, color);
+    this.width = side;
+    this.height = side;
+  }
 }
 
 const sqaure = new Square(7, 'purple');
@@ -82,59 +82,59 @@ console.log(sqaure.getDimensions()); // w:7, h:7
 console.log(sqaure.calculateArea()); // 49
 
 class Animal {
-	// COMMENT: encapsulation
-	static #instanceCounter = 1;
-	#count = Animal.#instanceCounter++;
+  // COMMENT: encapsulation
+  static #instanceCounter = 1;
+  #count = Animal.#instanceCounter++;
 
-	#name;
+  #name;
 
-	constructor(name) {
-		this.#name = name;
-	}
+  constructor(name) {
+    this.#name = name;
+  }
 
-	get name() {
-		return this.#name;
-	}
-	set name(n) {
-		this.#name = n;
-	}
+  get name() {
+    return this.#name;
+  }
+  set name(n) {
+    this.#name = n;
+  }
 
-	get instanceCount() {
-		return this.#count;
-	}
+  get instanceCount() {
+    return this.#count;
+  }
 }
 class Dog extends Animal {
-	constructor(name, color) {
-		super(name);
-		this._color = color;
-	}
-	get color() {
-		return this._color;
-	}
-	set color(c) {
-		this._color = c;
-	}
+  constructor(name, color) {
+    super(name);
+    this._color = color;
+  }
+  get color() {
+    return this._color;
+  }
+  set color(c) {
+    this._color = c;
+  }
 }
 class Cat extends Dog {
-	// COMMENT: encapsulation
-	#age;
+  // COMMENT: encapsulation
+  #age;
 
-	constructor(name, color, age) {
-		super(name, color);
-		this.#age = age;
-	}
+  constructor(name, color, age) {
+    super(name, color);
+    this.#age = age;
+  }
 
-	// COMMENT: polymorphism
-	get color() {
-		return `The color of ${this.name} is ${this._color}.`;
-	}
+  // COMMENT: polymorphism
+  get color() {
+    return `The color of ${this.name} is ${this._color}.`;
+  }
 
-	get age() {
-		return this.#age;
-	}
-	set age(a) {
-		this.#age = a;
-	}
+  get age() {
+    return this.#age;
+  }
+  set age(a) {
+    this.#age = a;
+  }
 }
 const animal = new Animal('Horse');
 console.log(animal.instanceCount); // 1
@@ -158,22 +158,22 @@ console.log(cat); // Cat { _color: 'orange' }
 
 // COMMENT: more encapsulation
 class Account {
-	#balance;
+  #balance;
 
-	constructor(name, balance) {
-		this._name = name; // COMMENT: the underscore has no technical functionality. But it's a former "prefix convention" to indicate a private property. Used with getter/setter methods.
-		this.#balance = balance; // COMMENT: the hash actually has the technical functionality to hide private properties.
-	}
+  constructor(name, balance) {
+    this._name = name; // COMMENT: the underscore has no technical functionality. But it's a former "prefix convention" to indicate a private property. Used with getter/setter methods.
+    this.#balance = balance; // COMMENT: the hash actually has the technical functionality to hide private properties.
+  }
 
-	get name() {
-		return this._name;
-	}
-	set name(n) {
-		this._name = n;
-	}
-	// get balance() {
-	// 	return this.#balance;
-	// }
+  get name() {
+    return this._name;
+  }
+  set name(n) {
+    this._name = n;
+  }
+  // get balance() {
+  // 	return this.#balance;
+  // }
 }
 const account = new Account('Bob', 1200);
 console.log(account._name);

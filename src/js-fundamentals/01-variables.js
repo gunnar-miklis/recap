@@ -160,4 +160,3 @@ console.log(result9); // => 'value'
 console.log(isUndefined ? 'this wont happen' : 'do this'); // => 'do this'
 console.log(isEmpty ? 'this wont happen' : 'do this'); // => 'do this'
 console.log(hasValue ? 'do this' : 'this wont happen'); // => 'do this'
-

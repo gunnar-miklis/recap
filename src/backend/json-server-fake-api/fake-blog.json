@@ -3,9 +3,7 @@
     {
       "id": "b1",
       "title": "10 Tips for Healthy Eating",
-      "authors": [
-        "a1"
-      ],
+      "authors": ["a1"],
       "date": "3/23/2023",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel ligula eu nulla congue lacinia. Sed vehicula quam nec ipsum tincidunt, eu aliquet nunc lobortis. Proin vel orci sit amet mauris ultricies commodo. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ut interdum ipsum. Donec commodo ligula ut magna molestie, eu fermentum odio tristique. Aliquam auctor libero at massa vehicula, at faucibus nulla lobortis. Nam at urna sit amet arcu ullamcorper blandit.",
       "isRead": false
@@ -13,10 +11,7 @@
     {
       "id": "b2",
       "title": "The Benefits of Regular Exercise",
-      "authors": [
-        "a1",
-        "a2"
-      ],
+      "authors": ["a1", "a2"],
       "date": "2/4/2022",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget pharetra purus, a viverra magna. Nulla facilisi. Phasellus pharetra mauris eu justo tincidunt dignissim. Integer at metus felis. Donec nec malesuada mi. Nam vel augue eget orci ultrices consequat a eget lacus. Nullam ut augue ut odio blandit efficitur. Sed quis sem sed ligula feugiat scelerisque.",
       "isRead": false
@@ -24,9 +19,7 @@
     {
       "id": "b3",
       "title": "How to Improve Your Sleep Quality",
-      "authors": [
-        "a3"
-      ],
+      "authors": ["a3"],
       "date": "6/15/2021",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel leo sit amet sapien ullamcorper egestas. Nulla id eros nec dui laoreet ullamcorper nec id mi. Nulla facilisi. Proin eget scelerisque eros, a scelerisque mi. Integer sed fringilla enim. Donec sagittis tincidunt nisi, in fermentum arcu pharetra eget. In quis metus vel nulla fermentum posuere.",
       "isRead": false
@@ -34,10 +27,7 @@
     {
       "id": "b4",
       "title": "The Importance of Drinking Water",
-      "authors": [
-        "a2",
-        "a3"
-      ],
+      "authors": ["a2", "a3"],
       "date": "2/24/2024",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod fermentum nulla, nec venenatis ipsum consequat et. Integer vel est massa. Nullam eleifend ligula nisi, id blandit nunc tincidunt ac. Phasellus volutpat id odio non consequat. Nam id odio at purus congue elementum. Suspendisse potenti. Aenean vestibulum nunc non leo rhoncus, ut placerat sapien gravida. Sed vestibulum aliquam velit, at tempor quam fringilla vel.",
       "isRead": false
@@ -45,11 +35,7 @@
     {
       "id": "b5",
       "title": "Tips for Staying Productive While Working from Home",
-      "authors": [
-        "a1",
-        "a2",
-        "a3"
-      ],
+      "authors": ["a1", "a2", "a3"],
       "date": "4/19/2019",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis mauris felis. Cras euismod tellus a lorem fermentum, eget varius magna dignissim. Nulla facilisi. Nam feugiat urna sed purus pharetra, sit amet aliquet nunc dapibus. Sed nec magna consequat, consequat sapien sit amet, faucibus odio. Proin non mi at nunc faucibus suscipit sed a elit. Nulla consequat, risus eu convallis feugiat, enim erat commodo magna, sit amet gravida libero elit quis ante.",
       "isRead": false
@@ -57,10 +43,7 @@
     {
       "id": "b6",
       "title": "Why JSX?",
-      "authors": [
-        "a2",
-        "a3"
-      ],
+      "authors": ["a2", "a3"],
       "date": "4/25/2024",
       "content": "This funny tag syntax is neither a string nor HTML.\n\nIt is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.\n\nJSX produces React “elements”. We will explore rendering them to the DOM in the next section. Below, you can find the basics of JSX necessary to get you started.\n\n",
       "isRead": false
@@ -70,29 +53,17 @@
     {
       "id": "a1",
       "name": "John Doe",
-      "posts": [
-        "b1",
-        "b2",
-        "b5"
-      ]
+      "posts": ["b1", "b2", "b5"]
     },
     {
       "id": "a2",
       "name": "Jane Smith",
-      "posts": [
-        "b2",
-        "b4",
-        "b5"
-      ]
+      "posts": ["b2", "b4", "b5"]
     },
     {
       "id": "a3",
       "name": "Alice Johnson",
-      "posts": [
-        "b3",
-        "b4",
-        "b5"
-      ]
+      "posts": ["b3", "b4", "b5"]
     }
   ]
 }

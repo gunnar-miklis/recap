@@ -1,17 +1,17 @@
 .navbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-	align-items: center;
-	padding: 0.6em;
-	border-bottom: 2px solid gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.6em;
+  border-bottom: 2px solid gray;
 }
 .active {
-	text-decoration: underline;
-	font-weight: 900;
-	font-size: x-large;
+  text-decoration: underline;
+  font-weight: 900;
+  font-size: x-large;
 }

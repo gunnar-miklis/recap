@@ -8,34 +8,32 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 //	* useNavigate(): programmatic, within in function
 
 export default function Project({ fakeProjectsData }) {
-	const [project, setProject] = useState({});
-	const { projectID } = useParams();
-	
-	const navigate = useNavigate();
-	function goBack() {
-		navigate(-1);
-	}
+  const [project, setProject] = useState({});
+  const { projectID } = useParams();
 
-	useEffect(() => {
-		const foundProject = fakeProjectsData.find(
-			(project) => project.id === projectID,
-		);
-		setProject(foundProject);
-	}, []);
+  const navigate = useNavigate();
+  function goBack() {
+    navigate(-1);
+  }
 
-	if (!project) return <Navigate to='/error' />;
-	return (
-		<div>
-			<h1>{project.name}</h1>
-			<img src={project.imageUrl} witdh='200' height='130' />
-			<p>{project.description}</p>
+  useEffect(() => {
+    const foundProject = fakeProjectsData.find((project) => project.id === projectID);
+    setProject(foundProject);
+  }, []);
 
-			<div className='navigation'>
-				<button onClick={goBack}>Go Back</button>
-				<button>
-					<Link to='/'>Home</Link>
-				</button>
-			</div>
-		</div>
-	);
+  if (!project) return <Navigate to='/error' />;
+  return (
+    <div>
+      <h1>{project.name}</h1>
+      <img src={project.imageUrl} witdh='200' height='130' />
+      <p>{project.description}</p>
+
+      <div className='navigation'>
+        <button onClick={goBack}>Go Back</button>
+        <button>
+          <Link to='/'>Home</Link>
+        </button>
+      </div>
+    </div>
+  );
 }

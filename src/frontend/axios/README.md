@@ -4,14 +4,14 @@
 
 ## Description
 
--   make API call with axios
--   add event listener on button click
--   post response to DOM
+- make API call with axios
+- add event listener on button click
+- post response to DOM
 
 ### external API
 
--   call: https://restcountries.com/v3.1/name/{country}
--   select "capital" and "cca2" (country code) from response
+- call: https://restcountries.com/v3.1/name/{country}
+- select "capital" and "cca2" (country code) from response
 
 ## Dependencies
 
@@ -24,8 +24,8 @@ none
 
 ## Example
 
--   Input field: `germany` > _fetch api..._ > Result: `DE: Berlin`
--   Input field: `spain` > _fetch api..._ > Result: `ES: Madrid`
+- Input field: `germany` > _fetch api..._ > Result: `DE: Berlin`
+- Input field: `spain` > _fetch api..._ > Result: `ES: Madrid`
 
 ## Endpoints
 

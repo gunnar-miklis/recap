@@ -21,7 +21,7 @@ console.log(words.length); // 3
 const phraseAgain = words.join(' '); // 'Hello World !'
 
 const sentences =
-	"This is the first sentence. Then there's another. Here is the third. And last, number four.";
+  "This is the first sentence. Then there's another. Here is the third. And last, number four.";
 const separatedSentences = sentences.split('. ');
 console.log(separatedSentences[0]);
 console.log(separatedSentences[1]);
@@ -30,19 +30,19 @@ console.log(separatedSentences[3]);
 
 // NOTE: iteration
 for (let i = 0; i < names.length; i++) {
-	console.log(names[i]);
+  console.log(names[i]);
 }
 for (const entry of names) {
-	console.log(entry);
+  console.log(entry);
 }
 names.forEach((entry) => {
-	console.log(entry);
+  console.log(entry);
 });
 names.forEach((entry, i) => {
-	console.log(`${i + 1}. ${entry}`); // '1. Helen', '2. John', '3. Peter', '4. Merry'
+  console.log(`${i + 1}. ${entry}`); // '1. Helen', '2. John', '3. Peter', '4. Merry'
 });
 const namesInChar = names.map((name) => {
-	return name.split('');
+  return name.split('');
 });
 console.log(namesInChar);
 const chars = namesInChar.flat();
@@ -86,25 +86,21 @@ const charsSortedReverse = charsSorted.reverse();
 console.log(charsSortedReverse);
 
 // NOTE: filter
-const sentencesFiltered = separatedSentences.filter((sentence) =>
-	sentence.includes('is'),
-);
+const sentencesFiltered = separatedSentences.filter((sentence) => sentence.includes('is'));
 console.log(sentencesFiltered); // ['This is the first sentence', 'Here is the third']
-const countNs = sentences
-	.split('')
-	.filter((character) => character === 'n').length;
+const countNs = sentences.split('').filter((character) => character === 'n').length;
 console.log(countNs); // 6
 
 // NOTE: operation during iteration
 const sumArr = arr.reduce((sum, entry) => {
-	return sum + entry;
+  return sum + entry;
 }, 0);
 console.log(sumArr); // 1+2+3+4 = 10
 
 // pass test during iteration
 const randomNumbers = [45, 4, 9, 16, 25];
 function isNumberGreaterThanTen(inputNumber) {
-	return inputNumber > 10;
+  return inputNumber > 10;
 }
 let result = null;
 result = randomNumbers.some((entry) => isNumberGreaterThanTen(entry));
@@ -131,12 +127,12 @@ const lowestNumber = Math.min(...randomNumbers); // 4
 
 // NOTE: destructuring
 const cities = [
-	['barcelona', 'es'],
-	['berlin', 'de'],
-	['paris', 'fr'],
-	['amsterdam', 'nl'],
-	['lisbon', 'pt'],
-	[['two'], ['dimensional'], ['data structure']],
+  ['barcelona', 'es'],
+  ['berlin', 'de'],
+  ['paris', 'fr'],
+  ['amsterdam', 'nl'],
+  ['lisbon', 'pt'],
+  [['two'], ['dimensional'], ['data structure']],
 ];
 const [city1] = cities;
 console.log(city1); // ['barcelona', 'es']

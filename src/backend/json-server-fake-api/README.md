@@ -2,8 +2,8 @@
 
 _"A Node Module that you can use to create demo rest json webservice in less than a minute. All you need is a JSON file for sample data."_
 
--   provide instant restful api
--   mock some data for demo or testing
+- provide instant restful api
+- mock some data for demo or testing
 
 ## start server
 

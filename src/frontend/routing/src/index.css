@@ -1,84 +1,84 @@
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-	background-color: rgba(255, 255, 255, 0.87);
-	color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+  color: #242424;
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
 }
 a:hover {
-	color: #535bf2;
+  color: #535bf2;
 }
 
 body {
-	margin: 0;
-	display: flex;
-	place-items: center;
-	min-width: 320px;
-	min-height: 100vh;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 button {
-	border-radius: 8px;
-	border: 2px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #f9f9f9;
-	cursor: pointer;
-	transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 button:hover {
-	border-color: #646cff;
+  border-color: #646cff;
 }
 
 .card-container {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	max-width: 860px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: 860px;
 }
 .card {
-	max-width: 320px;
-	text-align: justify;
-	margin: 0.6em;
-	padding: 0.6em 1.2em;
+  max-width: 320px;
+  text-align: justify;
+  margin: 0.6em;
+  padding: 0.6em 1.2em;
 
-	color: #242424;
-	font-size: 1em;
-	font-weight: normal;
+  color: #242424;
+  font-size: 1em;
+  font-weight: normal;
 
-	border-radius: 8px;
-	border: 2px solid transparent;
-	background-color: #f9f9f9;
-	cursor: pointer;
-	transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 .card:hover {
-	border-color: #646cff;
+  border-color: #646cff;
 }
 
 .navigation {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	margin: 2.4em auto;
-	max-width: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 2.4em auto;
+  max-width: 50%;
 }

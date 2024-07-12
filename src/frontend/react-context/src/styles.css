@@ -1,152 +1,152 @@
 :root {
-	font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
-	font-weight: 400;
-	line-height: 1.5;
+  font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
 
-	--accent: #4db6ac; /* equal to: --dark-accent */
+  --accent: #4db6ac; /* equal to: --dark-accent */
 
-	--light-text: #37474f;
-	--light-bg: #eceff1;
-	--light-nav-bg: #cfd8dc;
-	--light-accent: #00796b;
+  --light-text: #37474f;
+  --light-bg: #eceff1;
+  --light-nav-bg: #cfd8dc;
+  --light-accent: #00796b;
 
-	--dark-text: #ffffff;
-	--dark-bg: #37474f;
-	--dark-nav-bg: #263238;
-	--dark-accent: #4db6ac;
+  --dark-text: #ffffff;
+  --dark-bg: #37474f;
+  --dark-nav-bg: #263238;
+  --dark-accent: #4db6ac;
 
-	--app-width: 640px;
+  --app-width: 640px;
 }
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 html {
-	font-size: 1.2rem;
-	color: var(--dark-color);
-	background-color: var(--dark-bg);
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  background-color: var(--dark-bg);
 }
 ::selection {
-	background-color: #4db6ac88;
+  background-color: #4db6ac88;
 }
 
 /* Generics */
 h1 {
-	font-size: 3.2em;
-	margin: 1.6rem 0 1rem;
+  font-size: 3.2em;
+  margin: 1.6rem 0 1rem;
 }
 p {
-	margin: 1rem 0;
+  margin: 1rem 0;
 }
 a {
-	font-weight: 600;
-	font-size: 1.1rem;
-	text-decoration: underline;
-	cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* classes */
 .app {
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 .app-container {
-	width: var(--app-width);
-	padding: 1rem;
-	padding-top: 100px;
-	display: flex;
+  width: var(--app-width);
+  padding: 1rem;
+  padding-top: 100px;
+  display: flex;
 }
 
 .nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 10px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .nav-link-container {
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .nav-link {
-	font-weight: 400;
-	font-size: 1.1rem;
-	text-decoration: none;
+  font-weight: 400;
+  font-size: 1.1rem;
+  text-decoration: none;
 }
 .nav-link span {
-	font-size: 1rem;
-	text-shadow: 0 0 4px #00000088;
+  font-size: 1rem;
+  text-shadow: 0 0 4px #00000088;
 }
 .nav-active {
-	font-size: 1.3rem;
-	font-weight: 600;
-	text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .theme-switch {
-	border-radius: 8px;
-	border: 2px solid transparent;
-	padding: 10px;
-	font-weight: 500;
-	cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .theme-switch:hover {
-	border-color: var(--accent);
+  border-color: var(--accent);
 }
 .lang-switch {
-	border-radius: 8px;
-	border: 2px solid transparent;
-	padding: 10px;
-	font-weight: 500;
-	cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 10px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .lang-switch:hover {
-	border-color: var(--accent);
+  border-color: var(--accent);
 }
 .lang-active {
-	color: var(--accent) !important;
-	font-weight: bold;
+  color: var(--accent) !important;
+  font-weight: bold;
 }
 
 .form {
-	display: flex;
-	flex-flow: column nowrap;
-	gap: 0.8rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.8rem;
 }
 .form .input-wrapper {
-	display: flex;
-	flex-flow: column nowrap;
+  display: flex;
+  flex-flow: column nowrap;
 }
 .form .input {
-	font-size: 1rem;
-	padding: 0.3rem;
-	margin: 0.2rem 0;
-	outline: none;
-	background-color: transparent;
-	border: 2px solid transparent;
-	border-bottom: 2px solid var(--accent);
-	border-radius: 0.1rem;
-	transition: background-color 0.3s;
+  font-size: 1rem;
+  padding: 0.3rem;
+  margin: 0.2rem 0;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-bottom: 2px solid var(--accent);
+  border-radius: 0.1rem;
+  transition: background-color 0.3s;
 }
 .form label {
-	font-size: 1rem;
+  font-size: 1rem;
 }
 .button {
-	border: none;
-	background-color: transparent;
-	font-weight: 600;
-	font-size: 1.1rem;
-	text-decoration: underline;
-	cursor: pointer;
-	text-align: start;
-	padding: 0.3rem 0;
-	margin: 0.2rem 0;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: start;
+  padding: 0.3rem 0;
+  margin: 0.2rem 0;
 }

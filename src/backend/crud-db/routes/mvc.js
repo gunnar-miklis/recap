@@ -12,18 +12,16 @@ import { StudentModel } from '../db/schema-model.js';
 // NOTE: READ all + sort them by names + populate campus name
 // MVC: This CONTROLLER, gets a "request" and...
 router.get('/students', async (req, res, next) => {
-	try {
-		// MVC: ...asks for data from the MODEL...
-		const students = await StudentModel.find()
-			.sort({ name: 1 })
-			.populate({ path: 'campus', select: 'city' });
-		// MVC: ..."responds" by sending data to the VIEW (client).
-		res.status(200).json(
-			!students.length ? { message: 'Database is empty.' } : { students },
-		);
-	} catch (err) {
-		next(err);
-	}
+  try {
+    // MVC: ...asks for data from the MODEL...
+    const students = await StudentModel.find()
+      .sort({ name: 1 })
+      .populate({ path: 'campus', select: 'city' });
+    // MVC: ..."responds" by sending data to the VIEW (client).
+    res.status(200).json(!students.length ? { message: 'Database is empty.' } : { students });
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default router;

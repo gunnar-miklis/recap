@@ -6,29 +6,29 @@
 
 ### introduce
 
--   vite (bundler)
--   react (jsx)
--   styling (css)
--   SPA rendering
+- vite (bundler)
+- react (jsx)
+- styling (css)
+- SPA rendering
 
 ### react
 
--   react DOM
--   state, props, props.children
--   conditional rendering
+- react DOM
+- state, props, props.children
+- conditional rendering
 
 ### component-based architecture
 
--   **modularity, reusability, encapsulation**
--   components (**separation of concerns**)
--   controlled components (form input, form submit)
+- **modularity, reusability, encapsulation**
+- components (**separation of concerns**)
+- controlled components (form input, form submit)
 
 ### flow of information
 
 > _"data down, actions up"_
 
--   pass down: props
--   lift up: callbacks
+- pass down: props
+- lift up: callbacks
 
 ### component lifecycle
 
@@ -36,21 +36,21 @@
 2. update, re-rendering due to changes (props/state)
 3. unmount, destruction: remove from DOM
 
--   **hooks**: useState(), useEffect(), useRef()
--   state: represents the internal data specific to a component
--   side effects: functional operations outside the regular flow, performed without blocking the UI (fetching api)
+- **hooks**: useState(), useEffect(), useRef()
+- state: represents the internal data specific to a component
+- side effects: functional operations outside the regular flow, performed without blocking the UI (fetching api)
 
 ### custom toast bar component
 
--   trigger and show status message
--   setInterval(), **cleanup**: clearInterval()
+- trigger and show status message
+- setInterval(), **cleanup**: clearInterval()
 
 ## Dependencies
 
--   `vite`
--   `react`
--   `axios`
--   `prettier + eslint`
+- `vite`
+- `react`
+- `axios`
+- `prettier + eslint`
 
 ## Run (localhost)
 

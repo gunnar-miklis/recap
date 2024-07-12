@@ -1,26 +1,26 @@
 import mongoose from 'mongoose';
 
 export default async function connectDB() {
-	const dbURI = 'mongodb://127.0.0.1/refresh-dev';
+  const dbURI = 'mongodb://127.0.0.1/refresh-dev';
 
-	try {
-		mongoose.connect(dbURI);
-	} catch (err) {
-		next(err);
-	}
+  try {
+    mongoose.connect(dbURI);
+  } catch (err) {
+    next(err);
+  }
 
-	const db = mongoose.connection;
+  const db = mongoose.connection;
 
-	db.on('error', (err) => {
-		next(`connection error: ${err}`);
-	});
-	db.on('connected', () => {
-		console.log(`Database connected: ${dbURI}`);
-	});
-	db.on('disconnected', () => {
-		console.log(`Database disconnected.`);
-	});
-	process.on('SIGINT', () => {
-		db.close();
-	});
+  db.on('error', (err) => {
+    next(`connection error: ${err}`);
+  });
+  db.on('connected', () => {
+    console.log(`Database connected: ${dbURI}`);
+  });
+  db.on('disconnected', () => {
+    console.log(`Database disconnected.`);
+  });
+  process.on('SIGINT', () => {
+    db.close();
+  });
 }

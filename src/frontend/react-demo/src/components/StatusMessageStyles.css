@@ -1,41 +1,41 @@
 .box {
-	position: fixed;
-	left: 50%;
-	top: 1.2em;
-	transform: translate(-50%);
-	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	background-color: #f9f9f9;
-	animation: slideFromTopInOut 6.1s ease-in-out;
-	z-index: 99;
+  position: fixed;
+  left: 50%;
+  top: 1.2em;
+  transform: translate(-50%);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: #f9f9f9;
+  animation: slideFromTopInOut 6.1s ease-in-out;
+  z-index: 99;
 }
 @keyframes slideFromTopInOut {
-	0% {
-		top: -1.2em;
-		opacity: 0;
-	}
-	5% {
-		top: 1.2em;
-		opacity: 1;
-	}
-	95% {
-		top: 1.2em;
-		opacity: 1;
-	}
-	100% {
-		top: -1.2em;
-		opacity: 0;
-	}
+  0% {
+    top: -1.2em;
+    opacity: 0;
+  }
+  5% {
+    top: 1.2em;
+    opacity: 1;
+  }
+  95% {
+    top: 1.2em;
+    opacity: 1;
+  }
+  100% {
+    top: -1.2em;
+    opacity: 0;
+  }
 }
 .icon {
-	padding-right: 0.6em;
+  padding-right: 0.6em;
 }
 .success {
-	color: green;
+  color: green;
 }
 .error {
-	color: red;
+  color: red;
 }

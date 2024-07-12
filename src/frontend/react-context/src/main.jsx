@@ -8,15 +8,15 @@ import App from './App.jsx';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<React.StrictMode>
-		<ThemeProvider>
-			<LanguageProvider>
-				<AuthProvider>
-					<BrowserRouter>
-						<App />
-					</BrowserRouter>
-				</AuthProvider>
-			</LanguageProvider>
-		</ThemeProvider>
-	</React.StrictMode>,
+  <React.StrictMode>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
+  </React.StrictMode>,
 );

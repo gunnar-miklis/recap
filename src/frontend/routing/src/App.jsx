@@ -12,27 +12,26 @@ import './App.css';
 //	* considered sharing data "global". usecases: (light/dark) theme, (en/de) language, (user sign in/out) authentication
 
 export default function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-	return (
-		<>
-			<Navbar routes={routes} />
-			<Routes>
-				{routes &&
-					routes.map((route) => (
-						<Route
-							key={route.name}
-							path={route.path}
-							// COMMENT: React.cloneElement() renders each given element (route.element <About/>) new (create a new element) but with new attributes (isLoggedIn, toggleIsLoggedIn)
-							element={React.cloneElement(route.element, {
-								isLoggedIn: isLoggedIn,
-								toggleIsLoggedIn: () =>
-									setIsLoggedIn(!isLoggedIn),
-							})}
-						/>
-					))}
-				<Route path='*' element={<Error />} />
-			</Routes>
-		</>
-	);
+  return (
+    <>
+      <Navbar routes={routes} />
+      <Routes>
+        {routes &&
+          routes.map((route) => (
+            <Route
+              key={route.name}
+              path={route.path}
+              // COMMENT: React.cloneElement() renders each given element (route.element <About/>) new (create a new element) but with new attributes (isLoggedIn, toggleIsLoggedIn)
+              element={React.cloneElement(route.element, {
+                isLoggedIn: isLoggedIn,
+                toggleIsLoggedIn: () => setIsLoggedIn(!isLoggedIn),
+              })}
+            />
+          ))}
+        <Route path='*' element={<Error />} />
+      </Routes>
+    </>
+  );
 }

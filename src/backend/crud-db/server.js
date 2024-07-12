@@ -15,7 +15,7 @@ app.use(addTimestampToLog);
 connectDB();
 
 app.get('/api', (req, res, next) => {
-	res.json({ message: 'Application running.' });
+  res.json({ message: 'Application running.' });
 });
 
 //NOTE: handle routes
@@ -39,5 +39,5 @@ import { handleErrors } from './middleware/error-handling.js';
 app.use(handleErrors);
 
 app.listen(PORT, () => {
-	console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
