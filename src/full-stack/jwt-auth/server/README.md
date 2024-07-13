@@ -2,6 +2,8 @@
 
 > Authentication with JSON Web Token (JWT)
 
+Token-based authentication is stateless which means that no information is stored on the server.
+
 ## Procedure
 
 #### 1. Login

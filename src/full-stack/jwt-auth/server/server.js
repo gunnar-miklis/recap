@@ -4,7 +4,6 @@ const app = express();
 import mongoose from 'mongoose';
 import requestLogger from 'morgan';
 import 'dotenv/config';
-import { hasJWT } from './mw/hasJWT.js';
 import handleErrors from './mw/error-handling.js';
 import campusRoutes from './routes/campus.js';
 import authRoutes from './routes/auth.js';
@@ -30,7 +29,10 @@ app.get('/api/v1/', (req, res, next) => {
   res.status(200).json({ message: 'Application running.' });
 });
 app.use('/api/v1/', authRoutes);
-app.use('/api/v1/', hasJWT, campusRoutes);
+app.use('/api/v1/', campusRoutes);
+app.use(() => {
+  throw new Error('Route does not exist');
+});
 app.use(handleErrors);
 
 // run server

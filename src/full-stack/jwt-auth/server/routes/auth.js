@@ -62,7 +62,7 @@ router.post('/auth/login', async (req, res, next) => {
 
     // validation 2
     if (!foundUser) {
-      res.status(400).json({ message: 'User not found.' });
+      res.status(400).json({ message: 'User does not exist.' });
       return;
     }
 
@@ -72,8 +72,8 @@ router.post('/auth/login', async (req, res, next) => {
       res.status(400).json({ message: 'Wrong credentials.' });
       return;
     } else {
-      const payload = foundUser.username;
-      const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, { algorithm: 'HS256' });
+      const payload = {username: foundUser.username}; // COMMENT: has to be an object
+      const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, { algorithm: 'HS256', expiresIn: '15m' });
       res.status(200).json({ authToken });
     }
   } catch (error) {
