@@ -1,15 +1,16 @@
 import express from 'express';
 const app = express();
 
-import mongoose from 'mongoose';
-import requestLogger from 'morgan';
 import 'dotenv/config';
-import handleErrors from './mw/error-handling.js';
-import campusRoutes from './routes/campus.js';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import requestLogger from 'morgan';
 import authRoutes from './routes/auth.js';
+import otherRoutes from './routes/other.js';
+import handleErrors from './mw/error-handling.js';
 
 // database connection
-const dbURI = 'mongodb://127.0.0.1:27017/refresh-dev';
+const dbURI = process.env.MONGODB_URI;
 (async () => {
   try {
     await mongoose.connect(dbURI);
@@ -20,16 +21,17 @@ const dbURI = 'mongodb://127.0.0.1:27017/refresh-dev';
 })();
 
 // middlewares
+app.use(cors({ origin: process.env.EXPRESS_FRONTEND_URI }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger('dev'));
 
 // handle routes
 app.get('/api/v1/', (req, res, next) => {
-  res.status(200).json({ message: 'Application running.' });
+  res.status(200).json({ message: 'Api v1 running' });
 });
 app.use('/api/v1/', authRoutes);
-app.use('/api/v1/', campusRoutes);
+app.use('/api/v1/', otherRoutes);
 app.use(() => {
   throw new Error('Route does not exist');
 });

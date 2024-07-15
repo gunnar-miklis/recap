@@ -5,9 +5,9 @@ import App from './App.jsx';
 import './styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <AuthProvider>
       <App />
-    </React.StrictMode>
-  </AuthProvider>,
+    </AuthProvider>
+  </React.StrictMode>,
 );

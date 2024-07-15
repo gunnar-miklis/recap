@@ -31,4 +31,4 @@ Token-based authentication is stateless which means that no information is store
 | POST   |            | /api/v1/auth/signup | {username, password}      |                             |
 | POST   |            | /api/v1/auth/login  | {username, password}      | create JWT, sent username   |
 | GET    | protected  | /api/v1/auth/verify | Header.Auth: 'Bearer JWT' | handle JWT, reveal username |
-| GET    | protected  | /api/v1/campus      | Header.Auth: 'Bearer JWT' | handle JWT                  |
+| GET    | protected  | /api/v1/campuses    | Header.Auth: 'Bearer JWT' | handle JWT                  |

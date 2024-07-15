@@ -32,7 +32,6 @@ const CampusSchema = new Schema({
   ],
 });
 
-
 const UserModel = model('User', UserSchema);
 const CampusModel = model('Campus', CampusSchema);
 export { UserModel, CampusModel };
