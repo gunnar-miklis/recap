@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 const saltRounds = 10;
 
 import { UserModel } from '../db/schema.js';
-import { hasJWT } from '../mw/hasJWT.js';
+import { hasJWTAuth } from '../mw/hasJWTAuth.js';
 
 // NOTE: add new users
 router.post('/auth/signup', async (req, res, next) => {
@@ -69,7 +69,7 @@ router.post('/auth/login', async (req, res, next) => {
   }
 });
 
-router.get('/auth/verify', hasJWT, async (req, res, next) => {
+router.get('/auth/verify', hasJWTAuth, async (req, res, next) => {
   try {
     res.status(200).json(req.payload);
   } catch (error) {

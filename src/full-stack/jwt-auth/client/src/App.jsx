@@ -6,7 +6,7 @@ import IsPrivate from './components/IsPrivate';
 import IsPublic from './components/IsPublic';
 
 function App() {
-  const { isLoggedIn, currentUser, loginUser, verifyUser, logoutUser } = useAuthContext();
+  const { currentUser, loginUser, verifyUser, logoutUser } = useAuthContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [campuses, setCampuses] = useState([]);
@@ -18,7 +18,7 @@ function App() {
 
     try {
       const message = await apiService.signup({ username, password });
-      if (!message) throw new Error('ApiError');
+      if (!message) throw new Error('Unexpected ApiError');
       else if (Object.keys(message)[0] === 'error') throw new Error(message.error); // re-throw error passed from apiService to be displayed in toast message
 
       setShowSignup(false);
@@ -53,7 +53,7 @@ function App() {
   async function handleDelete() {
     try {
       const message = await apiService.delete({ username: currentUser.username });
-      if (!message) throw new Error('ApiError');
+      if (!message) throw new Error('Unexpected ApiError');
       else if (Object.keys(message)[0] === 'error') throw new Error(message.error); // re-throw error passed from apiService to be displayed in toast message
 
       handleLogout();
@@ -66,7 +66,7 @@ function App() {
   async function getCampuses() {
     try {
       const data = await apiService.getCampuses();
-      if (!data) throw new Error('ApiError');
+      if (!data) throw new Error('Unexpected ApiError');
       else if (Object.keys(data)[0] === 'error') throw new Error(data.error); // re-throw error passed from apiService to be displayed in toast message
 
       const { campuses } = data;
@@ -103,6 +103,7 @@ function App() {
       <header className='header'>
         <h1 className='h1'>AUTHENTICATION</h1>
       </header>
+
       <main className='main'>
         <IsPrivate>
           <div id='currentUser'>
@@ -213,6 +214,7 @@ function App() {
             </button>
           </div>
         </IsPrivate>
+
         <IsPrivate>
           <div id='delete'>
             <h2 className='h2'>Delete</h2>
@@ -221,6 +223,7 @@ function App() {
             </button>
           </div>
         </IsPrivate>
+
         <IsPrivate>
           <div id='logout'>
             <h2 className='h2'>Logout</h2>

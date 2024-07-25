@@ -9,7 +9,7 @@ function getTokenFromHeader(req) {
   }
 }
 
-export const hasJWT = jwt({
+export const hasJWTAuth = jwt({
   secret: process.env.JWT_TOKEN_SECRET,
   algorithms: ['HS256'],
   requestProperty: 'payload',

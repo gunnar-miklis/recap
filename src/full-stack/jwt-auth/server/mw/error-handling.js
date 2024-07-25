@@ -23,6 +23,8 @@ export default function handleErrors(err, req, res, next) {
     res.status(401).json({ error: 'JWT: ' + err.inner.message });
   } else if (err.message.includes('ECONNREFUSED')) {
     res.status(500).json({ error: 'Unable to connect to the Database' });
+  } else if (err.name === 'MongooseError') {
+    res.status(500).json({ error: 'Database Error' });
   } else if (err.name.includes('Mongoose')) {
     res.status(500).json({ error: 'Database Error' });
   } else {

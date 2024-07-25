@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger('dev'));
 
 // handle routes
-app.get('/api/v1/', (req, res, next) => {
+app.get('/api/v1/', (_, res) => {
   res.status(200).json({ message: 'Api v1 running' });
 });
 app.use('/api/v1/', authRoutes);
