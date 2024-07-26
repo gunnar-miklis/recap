@@ -1,4 +1,3 @@
-import React from 'react';
 import './CardStyles.css';
 
 export default function CardContent(props) {

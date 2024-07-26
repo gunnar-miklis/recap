@@ -1,4 +1,3 @@
-import React from 'react';
 import CardHeader from './CardHeader';
 import CardContent from './CardContent';
 import './CardStyles.css';

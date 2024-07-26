@@ -1,11 +1,11 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { authorization } from '../mw/authorization';
-import { UserModel } from '../db/schema';
+import { authorization } from '../mw/authorization.js';
+import { UserModel } from '../db/schema.js';
 
 const saltRounds = 10;
-const passwordRequirements = new ReqExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$/);
+const passwordRequirements = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$/);
 
 // Router instance
 const router = express.Router();
@@ -32,7 +32,7 @@ router.post('/auth/signup', async (req, res, next) => {
     if (!newUser) throw new Error('Database failed to create new user');
 
     // response: sent success message
-    res.status(200).json({ message: newUser.username });
+    res.status(201).json({ message: newUser.username });
   } catch (error) {
     next(error);
   }
@@ -57,7 +57,7 @@ router.post('/auth/login', async (req, res, next) => {
     const payload = { userId: foundUser._id, username: foundUser.username, role: 'Guest' };
     const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, {
       algorithm: 'HS256',
-      expriesIn: '3m',
+      expiresIn: '10m',
     });
 
     // response: sent token
@@ -69,10 +69,10 @@ router.post('/auth/login', async (req, res, next) => {
 
 router.get('/auth/verify', authorization, async (req, res, next) => {
   try {
-    const { userId, username, role } = req.payload;
+    const { userId, username, role, iat, exp } = req.payload;
 
     // response: sent username and role
-    res.status(200).json({ userId, username, role });
+    res.status(200).json({ userId, username, role, iat, exp });
   } catch (error) {
     next(error);
   }

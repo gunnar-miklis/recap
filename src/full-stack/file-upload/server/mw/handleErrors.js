@@ -1,4 +1,4 @@
-export default function handleErrors(req, res, nex, err) {
+export default function handleErrors(err, req, res, _next) {
   // console log errors
   console.log('ERROR NAME :>> ', err.name);
   console.log('ERROR MESSAGE :>> ', err.message);
@@ -7,7 +7,7 @@ export default function handleErrors(req, res, nex, err) {
 
   // handle specific errors
   if (err.message === 'Route does not exist') {
-    res.status(400).json({ error: 'This route does not exist.' });
+    res.status(404).json({ error: 'This route does not exist.' });
   } else if (err.message === 'Provide username and password') {
     res.status(400).json({ error: 'Provide a username and a password.' });
   } else if (err.message === 'PW does not match requirements') {
@@ -18,8 +18,10 @@ export default function handleErrors(req, res, nex, err) {
     res.status(500).json({ error: 'Database failed to create a new user.' });
   } else if (err.message === 'Wrong credentials') {
     res.status(400).json({ error: 'Wrong credentials.' });
+  } else if (err.name === 'UnauthorizedError') {
+    res.status(400).json({ error: err.message });
   } else if (err.message === 'Database connection error') {
-    res.status(500).json({ error: 'Service unavailable. Database connection error.' });
+    res.status(503).json({ error: 'Service unavailable. Database connection error.' });
   } else {
     res.status(500).json({ error: 'Internal Server Error.' });
   }

@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger('dev'));
 
-app.get('/api', (req, res, next) => {
+app.get('/api', (_req, res, _next) => {
   res.status(200).json({ message: 'Application running.' });
 });
 

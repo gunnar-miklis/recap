@@ -1,4 +1,4 @@
-export default function handleErrors(err, req, res, next) {
+export default function handleErrors(err, _req, res, _next) {
   const { cause } = err;
 
   if (cause) {

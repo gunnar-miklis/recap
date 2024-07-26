@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import './CardStyles.css';
 
@@ -12,7 +11,7 @@ export default function CardHeader({ id, title, date, authors, isRead, toggleIsR
       year: 'numeric',
     });
     setFormatedDate(fd);
-  }, []);
+  }, [date]);
 
   return (
     <div className='flex-col'>

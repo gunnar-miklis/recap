@@ -1,4 +1,4 @@
-export default function handleErrors(err, req, res, next) {
+export default function handleErrors(err, req, res, _next) {
   // log errors
   console.log('NAME :>> ', err.name);
   console.log('MESSAGE :>> ', err.message);

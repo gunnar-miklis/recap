@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 // COMMENT: react navigation
@@ -19,13 +19,13 @@ export default function Project({ fakeProjectsData }) {
   useEffect(() => {
     const foundProject = fakeProjectsData.find((project) => project.id === projectID);
     setProject(foundProject);
-  }, []);
+  }, [fakeProjectsData, projectID]);
 
   if (!project) return <Navigate to='/error' />;
   return (
     <div>
       <h1>{project.name}</h1>
-      <img src={project.imageUrl} witdh='200' height='130' />
+      <img src={project.imageUrl} width='200' height='130' />
       <p>{project.description}</p>
 
       <div className='navigation'>

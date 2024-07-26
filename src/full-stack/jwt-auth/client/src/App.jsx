@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from './context/AuthContext';
 import Toast from './components/Toast';
-import apiService from '../utils/apiService';
+import apiService from './utils/apiService';
 import IsPrivate from './components/IsPrivate';
 import IsPublic from './components/IsPublic';
 

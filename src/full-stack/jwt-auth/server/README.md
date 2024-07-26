@@ -11,8 +11,8 @@ Token-based authentication is stateless which means that no information is store
 - **Authentication**: The client provides credentials (username, password).
 - **Validation**:
   - The server confirms if critera are met (password requirements).
-  - The server creates a JWT Token with the `username` as payload. 
-  	> While creating JWTs with `jwt.sign(payload, secret, options)`, the payload **MUST** be an object !
+  - The server creates a JWT Token with the `username` as payload.
+    > While creating JWTs with `jwt.sign(payload, secret, options)`, the payload **MUST** be an object !
 - The client saves the JWT Token (local storage).
 
 #### 2. Verify
@@ -88,8 +88,8 @@ CampusModel.find({}, { city: 1, _id: 0 });
    - `request.method`,
    - `request.path`.
 2. sent error messages to client: `response.status(400/500).json({error:'message'})`
-   - Route does not exist,
-   - Validation erros,
-   - JWT, Unauthorized,
-   - Mongoose, (connection) errors,
-   - Unexpected error = internal server error.
+   - 404 Route does not exist,
+   - 400 Validation erros,
+   - 401 JWT, Unauthorized,
+   - 503 Mongoose, (connection) errors,
+   - 500 Unexpected error = internal server error.

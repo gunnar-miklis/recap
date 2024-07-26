@@ -1,9 +1,9 @@
-function logErrors(err, req, res, next) {
+function logErrors(err, _req, _res, next) {
   console.error(err);
   next(err);
 }
 
-function invalidPath(req, res, next) {
+function invalidPath(_req, res, _next) {
   res.status(404).json({ error: 'This route does not exist' });
 }
 
@@ -17,7 +17,7 @@ function handleClientErrors(err, req, res, next) {
   }
 }
 
-function handleErrors(err, req, res, next) {
+function handleErrors(_err, _req, res, _next) {
   res.status(500).json({ error: 'Internal Server Error' });
 }
 

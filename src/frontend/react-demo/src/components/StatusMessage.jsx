@@ -1,4 +1,3 @@
-import React from 'react';
 import './StatusMessageStyles.css';
 
 export default function StatusMessage({ status, message, seconds }) {

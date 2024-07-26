@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import apiService from '../../utils/apiService';
+import { createContext, useContext, useEffect, useState } from 'react';
+import apiService from '../utils/apiService';
 
 const AuthContext = createContext();
 
@@ -16,7 +16,7 @@ export default function AuthProvider({ children }) {
     if (storedJWT) {
       verifyUser();
     }
-  }, []);
+  }, [verifyUser]);
 
   // NOTE: login
   async function loginUser(username, password) {
@@ -31,7 +31,7 @@ export default function AuthProvider({ children }) {
         throw new Error(jwt.error); // re-throw error passed from apiService to be displayed in toast message
       }
     } catch (error) {
-      throw new Error(`${error.message}`);
+      throw new Error(error.message);
     }
   }
 
@@ -52,7 +52,7 @@ export default function AuthProvider({ children }) {
       setIsLoggedIn(true);
       return { message: `${verified.username} is verified` };
     } catch (error) {
-      throw new Error(`${error.message}`);
+      throw new Error(error.message);
     }
   }
 

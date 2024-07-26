@@ -1,4 +1,3 @@
-import React from 'react';
 import { useThemeContext } from '../context/theme/ThemeContext';
 import { useLanguageContext } from '../context/language/LanguageContext';
 

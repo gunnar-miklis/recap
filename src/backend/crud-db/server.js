@@ -14,7 +14,7 @@ app.use(addTimestampToLog);
 
 connectDB();
 
-app.get('/api', (req, res, next) => {
+app.get('/api', (_req, res, _next) => {
   res.json({ message: 'Application running.' });
 });
 

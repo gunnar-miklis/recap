@@ -4,5 +4,5 @@ export default function IsPrivate({ children }) {
   const { isLoggedIn } = useAuthContext();
 
   if (isLoggedIn) return <>{children}</>;
-  return <></>;
+  return null;
 }
