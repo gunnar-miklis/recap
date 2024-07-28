@@ -19,7 +19,7 @@ export default function AuthProvider({ children }) {
     if (Object.keys(tokenLifetime).length) {
       const lifetime = tokenLifetime.exp - tokenLifetime.iat;
       setNewMessage({
-        text: `Session automatically expires in ${lifetime / 60} minutes.`,
+        text: `Session automatically expires after ${lifetime / 60} minutes`,
         status: 'default',
       });
       const timer = setTimeout(() => {
@@ -60,7 +60,7 @@ export default function AuthProvider({ children }) {
         setIsLoggedIn(true);
         setTokenLifetime({ iat, exp });
         setCurrentUser({ userId, username, role });
-        return `${tokenPayload.username} logged in.`;
+        return `'${tokenPayload.username}' logged in`;
       } else if (Object.keys(tokenPayload)[0] === 'error') throw new Error(tokenPayload.error);
       else throw new Error('Unexpexted Error during verification');
     } catch (error) {
@@ -75,7 +75,7 @@ export default function AuthProvider({ children }) {
       setIsLoggedIn(false);
       setCurrentUser({});
       setTokenLifetime({});
-      return `${username} logged out`;
+      return `'${username}' logged out`;
     } catch (error) {
       throw new Error(error.message);
     }

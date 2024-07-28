@@ -15,9 +15,12 @@ export default function App() {
   async function handleSignup(event) {
     event.preventDefault();
     try {
-      const message = await apiService.signup({ username, password });
-      setNewMessage({ text: message, type: 'default' });
-      handleLogin();
+      const apiData = await apiService.signup({ username, password });
+      if (Object.keys(apiData)[0] === 'message') {
+        setNewMessage({ text: apiData.message, type: 'default' });
+        handleLogin();
+      } else if (Object.keys(apiData)[0] === 'error') throw new Error(apiData.error);
+      else throw new Error('Unexpexted Error during signup');
     } catch (error) {
       setNewMessage({ text: error.message, type: 'error' });
     }

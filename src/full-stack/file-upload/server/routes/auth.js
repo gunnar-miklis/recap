@@ -32,7 +32,7 @@ router.post('/auth/signup', async (req, res, next) => {
     if (!newUser) throw new Error('Database failed to create new user');
 
     // response: sent success message
-    res.status(201).json({ message: newUser.username });
+    res.status(201).json({ message: `'${newUser.username}' created` });
   } catch (error) {
     next(error);
   }
