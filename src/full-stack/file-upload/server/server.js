@@ -42,8 +42,8 @@ app.use((_req, _res, next) => {
 
 // routes
 app.get('/api/v1', (_, res) => res.status(200).json({ message: 'Server is running!' }));
-app.use('/api/v1', authRoutes);
-app.use('/api/v1', fileManagmentRoutes);
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/file', fileManagmentRoutes);
 app.use((_req, _res, next) => {
   try {
     throw new Error('Route does not exist');

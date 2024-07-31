@@ -11,8 +11,8 @@
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "startBackend1": "nodemon ./src/backend/crud-db/server.js",
     "startBackend2": "nodemon ./src/backend/pw-encryption/server.js",
-    "startBackend3": "nodemon ./src/full-stack/jwt-auth/server/server.js",
-    "startBackend4": "nodemon ./src/full-stack/file-upload/server/server.js",
+    "startBackend4": "nodemon ./src/full-stack/jwt-auth/server/server.js",
+    "startBackend5": "nodemon ./src/full-stack/file-upload/server/server.js",
     "startFrontend1": "vite src/frontend/react-demo",
     "startFrontend2": "vite src/frontend/routing",
     "startFrontend3": "vite src/frontend/react-context",
@@ -21,12 +21,15 @@
     "startJsonServer": "json-server --watch src/backend/json-server-fake-api/fake-blog.json --port 8000"
   },
   "dependencies": {
+    "cloudinary": "^2.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-jwt": "^8.4.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

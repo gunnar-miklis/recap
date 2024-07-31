@@ -10,7 +10,7 @@ const passwordRequirements = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{
 // Router instance
 const router = express.Router();
 
-router.post('/auth/signup', async (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
@@ -38,7 +38,7 @@ router.post('/auth/signup', async (req, res, next) => {
   }
 });
 
-router.post('/auth/login', async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
@@ -54,7 +54,13 @@ router.post('/auth/login', async (req, res, next) => {
     if (!isPwCorrect) throw new Error('Wrong credentials');
 
     // create JWT
-    const payload = { userId: foundUser._id, username: foundUser.username, role: 'Guest' };
+    const payload = {
+      userId: foundUser._id,
+      username: foundUser.username,
+      role: 'Guest',
+      bio: foundUser.bio,
+      avatar: foundUser.avatar,
+    };
     const authToken = jwt.sign(payload, process.env.JWT_TOKEN_SECRET, {
       algorithm: 'HS256',
       expiresIn: '10m',
@@ -67,12 +73,11 @@ router.post('/auth/login', async (req, res, next) => {
   }
 });
 
-router.get('/auth/verify', authorization, async (req, res, next) => {
+router.get('/verify', authorization, async (req, res, next) => {
   try {
-    const { userId, username, role, iat, exp } = req.payload;
-
-    // response: sent username and role
-    res.status(200).json({ userId, username, role, iat, exp });
+    // sent only relevant user data
+    const { username, role, bio, avatar, iat, exp } = req.payload;
+    res.status(200).json({ username, role, bio, avatar, iat, exp });
   } catch (error) {
     next(error);
   }

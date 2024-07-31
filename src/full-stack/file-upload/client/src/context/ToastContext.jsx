@@ -30,8 +30,8 @@ export default function ToastProvider({ children }) {
   useEffect(() => {
     if (!Object.keys(newMessage).length) return;
 
-    // 1. generate unique identifier
-    const newId = Date.now();
+    // 1. generate unique identifier: date + message length
+    const newId = Date.now() + Object.values(newMessage)[0].length;
     // add id to newMessage object to be identifiable
     newMessage.id = newId;
 

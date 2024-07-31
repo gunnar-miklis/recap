@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+function errorHandler(error) {
+  if (error.response.data.error) throw new Error(`ApiError: ${error.response.data.error}`);
+  else throw new Error(`ApiError: ${error.message}`);
+}
+
 class ApiService {
   constructor() {
     this.api = axios.create({
@@ -11,10 +16,10 @@ class ApiService {
         const storedAuthToken = sessionStorage.getItem('jwt');
         if (storedAuthToken) config.headers.Authorization = `Bearer ${storedAuthToken}`;
 
-        console.log('CONFIG method: ', config.method);
-        console.log('CONFIG url: ', config.url);
-        console.log('CONFIG data: ', config.data);
-        console.log('CONFIG Auth: ', config.headers.Authorization);
+        // console.log('CONFIG method: ', config.method);
+        // console.log('CONFIG url: ', config.url);
+        // console.log('CONFIG data: ', config.data);
+        // console.log('CONFIG Auth: ', config.headers.Authorization);
 
         return config;
       },
@@ -24,11 +29,12 @@ class ApiService {
     );
     this.api.interceptors.response.use(
       (response) => {
-        console.log('RESPONSE date: ', response.headers.date);
-        console.log('RESPONSE method: ', response.request._method);
-        console.log('RESPONSE status: ', response.status);
-        console.log('RESPONSE url: ', response.request._url);
-        console.log('RESPONSE data: ', response.data);
+        // console.log('RESPONSE date: ', response.headers.date);
+        // console.log('RESPONSE method: ', response.request._method);
+        // console.log('RESPONSE status: ', response.status);
+        // console.log('RESPONSE url: ', response.request._url);
+        // console.log('RESPONSE data: ', response.data);
+
         return response;
       },
       (error) => {
@@ -36,14 +42,15 @@ class ApiService {
       },
     );
   }
+  
 
+  // NOTE: auth routes
   async signup(userData) {
     try {
       const apiResponse = await this.api.post('/auth/signup', userData);
       return apiResponse.data;
     } catch (error) {
-      if (error.response.data.error) throw new Error(`ApiError: ${error.response.data.error}`);
-      else throw new Error(`ApiError: ${error.message}`);
+      errorHandler(error);
     }
   }
   async login(userData) {
@@ -51,8 +58,7 @@ class ApiService {
       const apiResponse = await this.api.post('/auth/login', userData);
       return apiResponse.data;
     } catch (error) {
-      if (error.response.data.error) throw new Error(`ApiError: ${error.response.data.error}`);
-      else throw new Error(`ApiError: ${error.message}`);
+      errorHandler(error);
     }
   }
   async verify() {
@@ -60,8 +66,25 @@ class ApiService {
       const apiResponse = await this.api.get('/auth/verify');
       return apiResponse.data;
     } catch (error) {
-      if (error.response.data.error) throw new Error(`ApiError: ${error.response.data.error}`);
-      else throw new Error(`ApiError: ${error.message}`);
+      errorHandler(error);
+    }
+  }
+
+  // NOTE: file routes
+  async uploadAvatar(uploadData) {
+    try {
+      const apiResponse = await this.api.post('/file/upload', uploadData);
+      return apiResponse.data;
+    } catch (error) {
+      errorHandler(error);
+    }
+  }
+  async storeAvatar(storeData) {
+    try {
+      const apiResponse = await this.api.post('/file/store', storeData);
+      return apiResponse.data;
+    } catch (error) {
+      errorHandler(error);
     }
   }
 }

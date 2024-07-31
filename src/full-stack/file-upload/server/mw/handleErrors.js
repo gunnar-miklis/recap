@@ -19,9 +19,15 @@ export default function handleErrors(err, req, res, _next) {
   } else if (err.message === 'Wrong credentials') {
     res.status(400).json({ error: 'Wrong credentials.' });
   } else if (err.name === 'UnauthorizedError') {
-    res.status(400).json({ error: err.message });
+    res.status(401).json({ error: err.message });
   } else if (err.message === 'Database connection error') {
     res.status(503).json({ error: 'Service unavailable. Database connection error.' });
+  } else if (err.message === 'Cloudinary: no file') {
+    res.status(400).json({ error: 'Upload Error: No file received.' });
+  } else if (err.message === 'Cloudinary: not uploaded') {
+    res.status(500).json({ error: 'Upload Error: File received but not uploaded.' });
+  } else if (err.message === 'userId or avatarUrl missing') {
+    res.status(400).json({ error: 'Upload Error: userId or avatar url missing.' });
   } else {
     res.status(500).json({ error: 'Internal Server Error.' });
   }

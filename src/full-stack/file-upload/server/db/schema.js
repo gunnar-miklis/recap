@@ -15,6 +15,12 @@ const UserSchema = new Schema(
       type: String,
       default: 'Guest',
     },
+	bio: {
+		type: String,
+	},
+	avatar: {
+		type: String
+	}
   },
   { timestamps: true },
 );

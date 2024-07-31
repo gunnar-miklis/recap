@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [tokenLifetime, setTokenLifetime] = useState({});
 
-  // NOTE: hanlde token expiration
+  // NOTE: handle token expiration
   useEffect(() => {
     if (Object.keys(tokenLifetime).length) {
       const lifetime = tokenLifetime.exp - tokenLifetime.iat;
@@ -53,18 +53,18 @@ export default function AuthProvider({ children }) {
   // NOTE: api call for verification to receive token payload + set current user
   async function verifyUser() {
     try {
-      const tokenPayload = await apiService.verify();
-      if (Object.keys(tokenPayload)[0] === 'userId') {
-        const { userId, username, role } = tokenPayload;
-        const { iat, exp } = tokenPayload;
+      const userData = await apiService.verify();
+      if (Object.keys(userData)[0] === 'username') {
+        const { username, role, bio, avatar, iat, exp } = userData;
         setIsLoggedIn(true);
         setTokenLifetime({ iat, exp });
-        setCurrentUser({ userId, username, role });
-        return `'${tokenPayload.username}' logged in`;
-      } else if (Object.keys(tokenPayload)[0] === 'error') throw new Error(tokenPayload.error);
+        setCurrentUser({ username, role, bio, avatar });
+        return `'${userData.username}' logged in`;
+      } else if (Object.keys(userData)[0] === 'error') throw new Error(userData.error);
       else throw new Error('Unexpexted Error during verification');
     } catch (error) {
-      throw new Error(error.message);
+		if (error.message.includes('jwt expired')) logoutUser();
+		throw new Error(error.message);
     }
   }
   // NOTE: reset states and clear storage

@@ -44,6 +44,38 @@ export default function App() {
       setNewMessage({ text: error.message, type: 'error' });
     }
   }
+  async function handleUpload(event) {
+    event.preventDefault();
+    try {
+      if (event.target[0].files[0]) {
+        const uploadData = new FormData();
+        uploadData.append('file', event.target[0].files[0]);
+        const avatarUrl = await apiService.uploadAvatar(uploadData);
+
+        // const selectedFile = event.target[0].files[0];
+        // const avatarUrl = await apiService.uploadAvatar({ file: selectedFile });
+
+        const apiResponse = await apiService.storeAvatar({ avatarUrl });
+        console.log('apiResponse :>> ', apiResponse);
+
+        setNewMessage({ text: 'Image Uploader clicked!', type: 'default' });
+      }
+    } catch (error) {
+      setNewMessage({ text: error.message, type: 'error' });
+    }
+  }
+
+  function daytimeGreeter() {
+    let greeting = '';
+    const now = new Date();
+    const hour = now.getHours();
+    if ((hour >= 22) | (hour < 6)) greeting = 'Have a restful night';
+    else if (hour >= 18) greeting = 'Good evening';
+    else if (hour >= 14) greeting = 'Good afternoon';
+    else if (hour >= 10) greeting = 'Have a great day';
+    else if (hour >= 6) greeting = 'Good morning';
+    return greeting;
+  }
 
   return (
     <>
@@ -51,13 +83,7 @@ export default function App() {
         <h1 className='h1'>FILE UPLOAD</h1>
       </header>
 
-      <main className='main'>
-        <IsPrivate>
-          <article id='currentUser' className='card card-lg'>
-            <h1 className='h1'>{currentUser.username}</h1>
-          </article>
-        </IsPrivate>
-
+      <main className='main dashboard'>
         <IsPublic>
           {showSignup && (
             <article id='signup' className='card card-md'>
@@ -90,9 +116,7 @@ export default function App() {
               </button>
             </article>
           )}
-        </IsPublic>
 
-        <IsPublic>
           {!showSignup && (
             <article id='login' className='card card-md'>
               <h2 className='h2'>Login</h2>
@@ -127,6 +151,44 @@ export default function App() {
         </IsPublic>
 
         <IsPrivate>
+          <article id='userName' className='card card-lg'>
+            <h2 className='h2'>
+              {daytimeGreeter()} <span>{currentUser.username}</span> !
+            </h2>
+          </article>
+
+          <article id='userAvatar' className='card card-sm'>
+            <div>
+              <img src={currentUser.avatar} width='50px' height='50px' alt='avatar' />
+            </div>
+          </article>
+
+          <article id='userBio' className='card card-md'>
+            <p>{currentUser.bio}</p>
+          </article>
+
+          <article id='userRole' className='card card-sm'>
+            <p>Your role:</p>
+            <p className='h3'>{currentUser.role}</p>
+          </article>
+
+          <article id='imgUploader' className='card card-md'>
+            <form className='form' onSubmit={(event) => handleUpload(event)}>
+              <label className='h3' htmlFor='avatar-upload'>
+                Change Profile Picture
+              </label>
+              <input
+                className='input'
+                type='file'
+                id='avatar-upload'
+                name='avatar-upload'
+                accept='.jpg, .jpeg, .png, .webp'
+              />
+
+              <button className='button'>Save</button>
+            </form>
+          </article>
+
           <article id='logout' className='card card-sm'>
             <button className='button' onClick={() => handleLogout()}>
               Logout
@@ -134,6 +196,10 @@ export default function App() {
           </article>
         </IsPrivate>
       </main>
+
+      <footer className='footer'>
+        <p>some footer</p>
+      </footer>
     </>
   );
 }
