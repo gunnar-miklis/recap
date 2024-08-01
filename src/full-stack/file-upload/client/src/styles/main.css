@@ -48,6 +48,7 @@ input {
   align-items: center;
 
   max-width: 800px;
+  min-height: 100%;
 }
 .header {
   text-align: center;
@@ -62,23 +63,24 @@ input {
   gap: 1.5rem;
 }
 .footer {
-	margin-top: 3rem;
-	padding: 1rem;
+  margin-top: 3rem;
+  padding: 1rem;
 }
 .card {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
-  padding: 1rem;
+  padding: 2rem;
 
+  border: 2px solid transparent;
   border-radius: 1rem;
   box-shadow: 0px 0px 8px #00000033;
 }
 .card-sm {
-  flex: 0 1 20%;
+  flex: 1 1 10%;
 }
 .card-md {
   flex: 1 1 40%;
@@ -132,19 +134,107 @@ input {
 
   cursor: pointer;
 }
+.file-input::file-selector-button {
+  appearance: none;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+
+  background-color: var(--bg);
+  font-weight: 700;
+
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px #00000022;
+
+  cursor: pointer;
+}
 .input:hover,
 .button:hover,
 .input:focus,
 .button:focus {
   border: 2px solid var(--accent);
 }
+.file-input:hover,
+.file-input:focus {
+  border: 2px solid transparent;
+}
+.file-input::file-selector-button:hover,
+.file-input::file-selector-button:focus {
+  border: 2px solid var(--text);
+}
+.textarea {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
 
+  color: var(--text);
+  background-color: transparent;
+  border: 2px solid var(--text);
+
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+}
+.textarea::-webkit-scrollbar {
+  width: 0.5rem;
+}
+textarea::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+textarea::-webkit-scrollbar-thumb {
+  background-color: #00000044;
+  border-radius: 1rem;
+}
+
+/* Components */
 #userName .h2 span {
   font-weight: 700;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;
+  height: 80px;
+
+  border: 2px solid var(--text);
+  border-radius: 50%;
+
+  box-shadow: 0px 0px 8px #00000022;
+  overflow: hidden;
+}
+#userAvatar .button {
+  width: 100%;
+}
+#userBio {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
 }
 #userBio p {
   text-align: left;
 }
-#imgUploader {
-	text-align: center;
+#avatarUploader {
+  text-align: center;
+  width: 100%;
+}
+#avatarUploader form,
+#avatarUploader .button {
+  width: 100%;
+}
+
+
+.active {
+  border-color: var(--accent);
 }

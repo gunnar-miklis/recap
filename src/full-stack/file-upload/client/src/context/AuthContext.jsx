@@ -19,12 +19,12 @@ export default function AuthProvider({ children }) {
     if (Object.keys(tokenLifetime).length) {
       const lifetime = tokenLifetime.exp - tokenLifetime.iat;
       setNewMessage({
-        text: `Session automatically expires after ${lifetime / 60} minutes`,
-        status: 'default',
+        text: `Session automatically expires after ${(lifetime / 60).toFixed(2)} minutes`,
+        type: 'default',
       });
       const timer = setTimeout(() => {
-        setNewMessage({ text: 'Session expired.', status: 'default' });
         logoutUser();
+        setNewMessage({ text: 'Session expired.', type: 'default' });
         clearInterval(timer);
       }, [lifetime * 1000]);
     }
@@ -63,8 +63,8 @@ export default function AuthProvider({ children }) {
       } else if (Object.keys(userData)[0] === 'error') throw new Error(userData.error);
       else throw new Error('Unexpexted Error during verification');
     } catch (error) {
-		if (error.message.includes('jwt expired')) logoutUser();
-		throw new Error(error.message);
+      if (error.message.includes('jwt expired')) logoutUser();
+      throw new Error(error.message);
     }
   }
   // NOTE: reset states and clear storage
@@ -82,7 +82,9 @@ export default function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, currentUser, loginUser, logoutUser }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, currentUser, setCurrentUser, loginUser, logoutUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

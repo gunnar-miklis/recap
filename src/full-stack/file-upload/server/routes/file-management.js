@@ -1,61 +1,59 @@
 import express from 'express';
+import { CloudinaryError } from '../mw/handleErrors.js';
 import { authorization } from '../mw/authorization.js';
-import { UserModel } from '../db/schema.js';
-import fileUploader from '../db/cloudinary.js';
+import { cloudinaryRemoveImage, cloudinaryUploadStream, formParser } from '../db/cloudinary.js';
+import { defaultAvatar, UserModel } from '../db/schema.js';
 
-import { v2 as cloudinary } from 'cloudinary';
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET,
-});
-
-// Router instance
+// router instance
 const router = express.Router();
 
-router.post('/upload', authorization, fileUploader.single('file'), async (req, res, next) => {
+router.post('/upload', authorization, formParser.single('inputFile'), async (req, res, next) => {
   try {
-    const { username } = req.payload;
-    console.log('username :>> ', username);
+    // get request data
+    const { userId, username } = req.payload;
     const { file } = req;
-    console.log('file :>> ', file);
+    if (!file) throw new CloudinaryError('no file');
 
-    // const uploadResult = await cloudinary.uploader.upload(file.buffer, { resource_type: 'image', public_id: `${username}-avatar`});
-    const uploadResult = await cloudinary.uploader
-      .upload_stream((error, uploadResult) => {
-		if ( error) throw new Error(error.message);
-        return uploadResult;
-      })
-      .end(file.buffer);
-    console.log('uploadResult :>> ', uploadResult);
+    // upload the requested image to cloudinary
+    const uploadResult = await cloudinaryUploadStream(file, username);
+    if (!uploadResult) throw new CloudinaryError('got file but not uploaded');
 
-    if (!file) throw new Error('Cloudinary: no file');
-    else if (!file.path) throw new Error('Cloudinary: not uploaded');
+    // store the created cloudinary url in database
+    const avatarUrl = uploadResult.secure_url;
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { avatar: avatarUrl },
+      { new: true },
+    );
 
-    res.status(200).json({ avatarUrl: file.path });
+    // response: sent url to update the current state immediately
+    res.status(200).json({ message: 'New profile picture saved', avatar: updatedUser.avatar });
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/store', authorization, async (req, res, next) => {
+router.delete('/delete', authorization, async (req, res, next) => {
   try {
-    console.log('req.body :>> ', req.body);
-    const { userId } = req.payload;
-    const { avatarUrl } = req.body;
+    const { userId, username } = req.payload;
 
-    if (!userId | !avatarUrl) throw new Error('userId or avatarUrl missing');
+    // set cloudinary public_id
+    const folder = 'user-avatars';
+    const imageId = `${username}-avatar`;
+	const publicId = `${folder}/${imageId}`;
 
-    // TODO: store db
-    const updatedUser = UserModel.findOneAndUpdate(
-      { _id: userId },
-      { avatar: avatarUrl },
+    // delete file from cloudinary
+    const deleteResult = await cloudinaryRemoveImage(publicId);
+    if (!deleteResult || deleteResult.result !== 'ok') throw new CloudinaryError('not deleted');
+
+    // update the database, reset avatar to default image
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { avatar: defaultAvatar },
       { new: true },
     );
-    console.log('updatedUser :>> ', updatedUser);
 
-    res.status(200).json({ message: 'New profile picture saved!', avatarUrl: updatedUser.avatar });
+    res.status(200).json({ message: 'Profil picture deleted', avatar: updatedUser.avatar });
   } catch (error) {
     next(error);
   }

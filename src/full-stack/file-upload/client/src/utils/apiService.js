@@ -42,7 +42,6 @@ class ApiService {
       },
     );
   }
-  
 
   // NOTE: auth routes
   async signup(userData) {
@@ -70,18 +69,20 @@ class ApiService {
     }
   }
 
-  // NOTE: file routes
+  // NOTE: file route
   async uploadAvatar(uploadData) {
     try {
-      const apiResponse = await this.api.post('/file/upload', uploadData);
+      const apiResponse = await this.api.post('/file/upload', uploadData, {
+        headers: { 'content-type': 'multipart/form-data' },
+      });
       return apiResponse.data;
     } catch (error) {
       errorHandler(error);
     }
   }
-  async storeAvatar(storeData) {
+  async deleteAvatar() {
     try {
-      const apiResponse = await this.api.post('/file/store', storeData);
+      const apiResponse = await this.api.delete('/file/delete');
       return apiResponse.data;
     } catch (error) {
       errorHandler(error);

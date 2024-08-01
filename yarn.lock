@@ -3879,15 +3879,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multer-storage-cloudinary@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "multer-storage-cloudinary@npm:4.0.0"
-  peerDependencies:
-    cloudinary: ^1.21.0
-  checksum: 10c0/febbed4bbb6153b7db04c2574e43d446a8fdd9fed731928ffa6afee8f2495acaeb72e09cf785efa34848bcf415cca95532a664f80e93b901f4181babf44ee00b
-  languageName: node
-  linkType: hard
-
 "multer@npm:^1.4.5-lts.1":
   version: 1.4.5-lts.1
   resolution: "multer@npm:1.4.5-lts.1"
@@ -4483,7 +4474,6 @@ __metadata:
     mongoose: "npm:^8.3.1"
     morgan: "npm:^1.10.0"
     multer: "npm:^1.4.5-lts.1"
-    multer-storage-cloudinary: "npm:^4.0.0"
     nodemon: "npm:^3.1.0"
     prettier: "npm:3.0.3"
     react: "npm:^18.2.0"

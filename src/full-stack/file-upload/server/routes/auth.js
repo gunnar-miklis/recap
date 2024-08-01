@@ -1,13 +1,14 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { ClientInputError, DatabaseError } from '../mw/handleErrors.js';
 import { authorization } from '../mw/authorization.js';
 import { UserModel } from '../db/schema.js';
 
 const saltRounds = 10;
 const passwordRequirements = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9]).{6,}$/);
 
-// Router instance
+// router instance
 const router = express.Router();
 
 router.post('/signup', async (req, res, next) => {
@@ -15,21 +16,21 @@ router.post('/signup', async (req, res, next) => {
     const { username, password } = req.body;
 
     // validation 1: provide username/password
-    if (!username || !password) throw new Error('Provide username and password');
+    if (!username || !password) throw new ClientInputError('Provide username/password');
 
     // validation 2: password requirements
     const isPwValid = passwordRequirements.test(password);
-    if (!isPwValid) throw new Error('PW does not match requirements');
+    if (!isPwValid) throw new ClientInputError('PW requirements');
 
     // validation 3: username already exist
     const alreadyExist = await UserModel.findOne({ username });
-    if (alreadyExist) throw new Error('Username already exist');
+    if (alreadyExist) throw new ClientInputError('Username already exist');
 
     // database: new user
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
     const newUser = await UserModel.create({ username, password: hash });
-    if (!newUser) throw new Error('Database failed to create new user');
+    if (!newUser) throw new DatabaseError('no user created');
 
     // response: sent success message
     res.status(201).json({ message: `'${newUser.username}' created` });
@@ -43,15 +44,15 @@ router.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
 
     // validation 1: provide username/password
-    if (!username || !password) throw new Error('Provide username and password');
+    if (!username || !password) throw new ClientInputError('Provide username and password');
 
     // validation 2: wrong credentials: user not found
     const foundUser = await UserModel.findOne({ username });
-    if (!foundUser) throw new Error('Wrong credentials');
+    if (!foundUser) throw new ClientInputError('Credentials');
 
     // validation 3: wrong credentials: wrong password
     const isPwCorrect = bcrypt.compareSync(password, foundUser.password);
-    if (!isPwCorrect) throw new Error('Wrong credentials');
+    if (!isPwCorrect) throw new ClientInputError('Credentials');
 
     // create JWT
     const payload = {
