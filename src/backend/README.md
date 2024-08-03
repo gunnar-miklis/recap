@@ -42,15 +42,19 @@
 ## Handle responses uniformly with HTTP status codes
 
 Commonly used HTTP response status codes are:
-
-- 200 - OK
-- 201 - Created
-- 204 - No Content
-- 301 - Moved Permanently (Redirect)
-- 400 - Bad Request
-- 401 - Unauthorized
-- 404 - Not Found
-- 500 - Internal Server Error
+|         |                                                      |
+| ------- | ---------------------------------------------------- |
+| **200** | Ok (successful)                                      |
+| **201** | Created                                              |
+| **204** | No Content                                           |
+| **301** | Moved Permanently (redirect)                         |
+| **400** | Bad Request (invalid request parameter, wrong input) |
+| **401** | Unauthorized (JWT Authentication)                    |
+| **403** | Not allowed (role)                                   |
+| **404** | Not Found (route not exist)                          |
+| **420** | Rate limited                                         |
+| **500** | Internal Server Error                                |
+| **503** | Service Unavailable (DB connection error)            |
 
 # Cross-Origin Resource Sharing (CORS)
 

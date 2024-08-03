@@ -3944,6 +3944,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nodemailer@npm:^6.9.14":
+  version: 6.9.14
+  resolution: "nodemailer@npm:6.9.14"
+  checksum: 10c0/2542986849bc6ec2bf12fb7b72226da0ce9c6a0946216dea020d9eedee3ac1a4eb2413f59772a3ddd4bb9188d5ce859167a030c065719473f71319e052a319dc
+  languageName: node
+  linkType: hard
+
 "nodemon@npm:^3.1.0":
   version: 3.1.4
   resolution: "nodemon@npm:3.1.4"
@@ -4474,6 +4481,7 @@ __metadata:
     mongoose: "npm:^8.3.1"
     morgan: "npm:^1.10.0"
     multer: "npm:^1.4.5-lts.1"
+    nodemailer: "npm:^6.9.14"
     nodemon: "npm:^3.1.0"
     prettier: "npm:3.0.3"
     react: "npm:^18.2.0"
