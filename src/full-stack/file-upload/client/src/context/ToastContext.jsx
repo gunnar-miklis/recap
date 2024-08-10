@@ -77,10 +77,10 @@ export default function ToastProvider({ children }) {
   // handle dismiss on click
   function dismissMessage(messageId) {
     removeAnimation(messageId);
-	const removeDelay = setTimeout( () => {
-		removeFromStack(messageId);
-		clearTimeout(removeDelay);
-	}, 400)
+    const removeDelay = setTimeout(() => {
+      removeFromStack(messageId);
+      clearTimeout(removeDelay);
+    }, 400);
   }
 
   return (

@@ -6,8 +6,6 @@ import requestLogger from 'morgan';
 import handleErrors, { ClientInputError, DatabaseError } from './mw/handleErrors.js';
 import authRoutes from './routes/auth.js';
 import fileManagmentRoutes from './routes/file-management.js';
-import { UserModel } from './db/schema.js';
-import { authorization } from './mw/authorization.js';
 
 // NOTE: database
 // with this approach I can run the server and give feedback to the client that the database isn't connected.
@@ -43,7 +41,6 @@ app.use((_req, _res, next) => {
 });
 
 // NOTE: routes
-
 app.get('/api/v1', (_, res) => res.status(200).json({ message: 'Server is running!' }));
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/file', fileManagmentRoutes);

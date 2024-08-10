@@ -18,20 +18,20 @@ export default function App() {
 
   // reset states
   useEffect(() => {
-	if (!isLoggedIn) {
-		setUsername('');
-		setPassword('');
-		setShowAvatarUploader(false);
-		setShowEditBio(false);
-	}
+    if (!isLoggedIn) {
+      setUsername('');
+      setPassword('');
+      setShowAvatarUploader(false);
+      setShowEditBio(false);
+    }
   }, [isLoggedIn]);
 
   // NOTE: auth handler
   async function handleSignup(event) {
     event.preventDefault();
 
-	const newUsername = event.target[0].value;
-	const newPassword = event.target[1].value;
+    const newUsername = event.target[0].value;
+    const newPassword = event.target[1].value;
 
     try {
       // api call: create new user in database
@@ -49,19 +49,18 @@ export default function App() {
     }
   }
   async function handleLogin(event, signupUsername, signupPassword) {
-
-	// COMMENT: This is handled very bad. Would be much clearer when using TypeScript.
-	let loginUsername = '';
-	let loginPassword = '';
+    // COMMENT: This is handled very bad. Would be much clearer when using TypeScript. **Update: It's actually preferrable to use the state instead of event.target, I read.
+    let loginUsername = '';
+    let loginPassword = '';
 
     if (event) {
-		event.preventDefault();
-		loginUsername = event.target[0].value;
-		loginPassword = event.target[1].value;
-	} else if ( signupUsername && signupPassword ) {
-		loginUsername = signupUsername;
-		loginPassword = signupPassword
-	}
+      event.preventDefault();
+      loginUsername = event.target[0].value;
+      loginPassword = event.target[1].value;
+    } else if (signupUsername && signupPassword) {
+      loginUsername = signupUsername;
+      loginPassword = signupPassword;
+    }
 
     try {
       // api call: get a auth token then verify user using it
@@ -126,10 +125,10 @@ export default function App() {
   }
 
   async function handleBioUpdates(event) {
-	event.preventDefault();
-	const text = event.target.value;
-	// const apiData = await apiService.updateBio(text);
-	setShowEditBio(false);
+    event.preventDefault();
+    const text = event.target.value;
+    // const apiData = await apiService.updateBio(text); // COMMENT: No need to implement this. It's just for demonstration purpose anyway.
+    setShowEditBio(false);
   }
 
   return (
@@ -242,7 +241,7 @@ export default function App() {
                   id='avatar-upload'
                   name='avatar-upload'
                   accept='.jpg, .jpeg, .png, .webp'
-				  onChange={()=>setNewMessage({text:'File selected', type: 'default'})}
+                  onChange={() => setNewMessage({ text: 'File selected', type: 'default' })}
                 />
                 <button type='submit' className='button'>
                   Upload

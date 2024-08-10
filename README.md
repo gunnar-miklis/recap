@@ -1,22 +1,59 @@
-# Recap
+# RECAP
 
-Practice. Learn. Improve.
+> Practice. Learn. Improve.
+```bash
+├── js-fundamentals
+├── backend
+├── frontend
+└── full-stack
+```
 
-## js-fundamentals
-- JS coding
-- JS Concepts, nodeJS
+## JS FUNDAMENTALS
+```bash
+js-fundamentals
+├── 01-variables.js
+├── 02-loops-and-functions.js
+├── 03-arrays.js
+├── 04-objects-and-nested-structures.js
+├── 05-oop-and-classes.js
+├── 06-async-javascript.js
+├── 07-additional-content.md
+├── DOM/
+└── katas/
+```
+### Topics
+- JS coding concepts, nodeJS
 - HTML, CSS, DOM
-- Practice
+- Coding practice (katas)
 
-## backend
+## BACKEND
+```bash
+backend
+├── crud-db/
+├── json-server-fake-api/
+├── nodemailer/
+└── pw-encryption/
+```
+### Topics
 - MVC, Response-Request-Cylce
 - REST API, CRUD, ExpressJS
 - DB, ODM, MongoDB
 - Json-server
-- Security/password encryption
+- Security/password encryption, bcryptJS
 - CORS
+- Nodemailer
 
-## frontend
+
+
+## FRONTEND
+```bash
+frontend
+├── axios/
+├── react-context/
+├── react-demo/
+└── routing/
+```
+### Topics
 - Axios, fetch external API
 - SPA rendering, component-based architecture
 - React
@@ -25,6 +62,22 @@ Practice. Learn. Improve.
 	- routing, navigation
 	- context (theme, language, auth)
 
-## full-stack
-- TODO: app
-- TODO: jwt
+
+
+## FULLSTACK
+```bash
+full-stack
+├── file-upload/
+└── jwt-auth/
+```
+### Topics
+- Token-based Authentication (JWT: JSON Web Token)
+	- authentication > verification > authorization
+	- public/private/protected routes
+	- login/signup input data validation
+	- error handling
+	- user feedback, (success/error) messages (toast)
+- File-Upload via Cloudinary
+	- multipart/form-data
+	- handle token expiration
+

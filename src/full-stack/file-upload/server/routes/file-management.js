@@ -40,7 +40,7 @@ router.delete('/delete', authorization, async (req, res, next) => {
     // set cloudinary public_id
     const folder = 'user-avatars';
     const imageId = `${username}-avatar`;
-	const publicId = `${folder}/${imageId}`;
+    const publicId = `${folder}/${imageId}`;
 
     // delete file from cloudinary
     const deleteResult = await cloudinaryRemoveImage(publicId);
