@@ -2,6 +2,12 @@
 
 > **security - password encryption**
 
+## Run (localhost)
+
+```bash
+$ yarn startBackend2
+```
+
 ## Description
 
 ### introduce
@@ -25,20 +31,6 @@
 - morgan (request logger)
 - nodemon (testing)
 - prettier + eslint
-
-## Run (localhost)
-
-### start database
-
-```bash
-$ mongod --dbpath ~/.mongodb/db > /dev/null 2>&1 &
-```
-
-### start server
-
-```bash
-$ yarn startBackend2
-```
 
 ## RESTful
 

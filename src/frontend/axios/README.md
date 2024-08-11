@@ -13,10 +13,6 @@
 - call: https://restcountries.com/v3.1/name/{country}
 - select "capital" and "cca2" (country code) from response
 
-## Dependencies
-
-none
-
 ## Run
 
 1. just open index.html in browser

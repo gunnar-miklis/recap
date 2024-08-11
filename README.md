@@ -1,16 +1,25 @@
 # RECAP
 
 > Practice. Learn. Improve.
+
+A look back at the journey of becoming a web developer. 
+- With personal notes to summarize certain concepts, 
+- step-by-step instructions to document certain approaches, 
+- as well as comments as reminders of how things been done. 
+
+Simply a personalized review that I can return to when a little refresher is needed.
+
 ```bash
-├── js-fundamentals
-├── backend
-├── frontend
-└── full-stack
+src/
+├── js-fundamentals/
+├── backend/
+├── frontend/
+└── full-stack/
 ```
 
 ## JS FUNDAMENTALS
 ```bash
-js-fundamentals
+js-fundamentals/
 ├── 01-variables.js
 ├── 02-loops-and-functions.js
 ├── 03-arrays.js
@@ -21,6 +30,7 @@ js-fundamentals
 ├── DOM/
 └── katas/
 ```
+
 ### Topics
 - JS coding concepts, nodeJS
 - HTML, CSS, DOM
@@ -28,12 +38,13 @@ js-fundamentals
 
 ## BACKEND
 ```bash
-backend
+backend/
 ├── crud-db/
 ├── json-server-fake-api/
 ├── nodemailer/
 └── pw-encryption/
 ```
+
 ### Topics
 - MVC, Response-Request-Cylce
 - REST API, CRUD, ExpressJS
@@ -43,16 +54,15 @@ backend
 - CORS
 - Nodemailer
 
-
-
 ## FRONTEND
 ```bash
-frontend
+frontend/
 ├── axios/
 ├── react-context/
 ├── react-demo/
 └── routing/
 ```
+
 ### Topics
 - Axios, fetch external API
 - SPA rendering, component-based architecture
@@ -62,14 +72,13 @@ frontend
 	- routing, navigation
 	- context (theme, language, auth)
 
-
-
 ## FULLSTACK
 ```bash
-full-stack
+full-stack/
 ├── file-upload/
 └── jwt-auth/
 ```
+
 ### Topics
 - Token-based Authentication (JWT: JSON Web Token)
 	- authentication > verification > authorization
@@ -80,4 +89,3 @@ full-stack
 - File-Upload via Cloudinary
 	- multipart/form-data
 	- handle token expiration
-

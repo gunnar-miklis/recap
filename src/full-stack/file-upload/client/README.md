@@ -4,7 +4,14 @@
 
 The foundation of this project comes from: **[JWT-Auth](../../jwt-auth/client/README.md)**.
 
-### Dashboard Parts (Extension)
+## Run (localhost)
+
+```bash
+$ yarn startFrontend5
+```
+
+
+## Dashboard Parts (Extension)
 
 | login state | component            | visibility |
 | ----------- | -------------------- | ---------- |
@@ -38,3 +45,11 @@ The foundation of this project comes from: **[JWT-Auth](../../jwt-auth/client/RE
 - Message appearing/disappearing is now animated.
 - Messages can now be dismissed on click.
 - ToastContext is further abstracted to be build as reusable component.
+
+## Dependencies
+
+- vite
+- react
+- react-dom
+- axios
+- prettier + eslint

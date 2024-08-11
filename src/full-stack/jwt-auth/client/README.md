@@ -4,6 +4,13 @@
 
 Token-based authentication is stateless which means that no information is stored on the server.
 
+### Run (localhost)
+
+```bash
+$ yarn startFrontend4
+```
+
+
 ## Approach
 
 Have a SPA dashboard which updates it's view dynamically based on the "login state" (private/public).
@@ -57,3 +64,11 @@ Have a SPA dashboard which updates it's view dynamically based on the "login sta
 - Displays a stack (list) of messages.
 - Each message disappears automatically after a certain duration.
 - "Default messages" are distinct from "error messages".
+
+## Dependencies
+
+- vite
+- react
+- react-dom
+- axios
+- prettier + eslint

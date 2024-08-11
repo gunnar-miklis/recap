@@ -4,6 +4,12 @@
 
 The foundation of this project comes from: **[JWT-Auth](../../jwt-auth/server/README.md)**.
 
+## Run (localhost)
+
+```bash
+$ yarn startBackend5
+```
+
 ## Procedure
 
 #### 1. Receive form-data
@@ -33,6 +39,21 @@ Store the Public-URL, Image-ID and other usefull file parameters in a text based
    - `uploader.upload_stream()`: can be used for files sent via form-data. It can read the buffer exposed by multer middleware parser. This one must be wrapped in a `Promise`.
    - `uploader.destroy(`, etc.: can be used for deleting resources.
 4. The result will be an object containing information about the upoaded image including a `Public URL` and `File ID`.
+
+## Dependencies
+
+- express
+- dotenv
+- cors
+- morgan
+- mongoose
+- bcryptjs
+- jsonwebtoken
+- express-jwt
+- cloudinary
+- multer
+- nodemon
+- prettier + eslint
 
 ## Endpoints
 

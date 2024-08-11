@@ -2,6 +2,12 @@
 
 > **REST API + CRUD + DB**
 
+## Run (localhost)
+
+```bash
+$ yarn startBackend1
+```
+
 ## Description
 
 ### introduce
@@ -57,20 +63,6 @@
 - morgan (request logger)
 - nodemon (testing)
 - prettier + eslint
-
-## Run (localhost)
-
-### start database
-
-```bash
-$ mongod --dbpath ~/.mongodb/db > /dev/null 2>&1 &
-```
-
-### start server
-
-```bash
-$ yarn startBackend1
-```
 
 ## RESTful
 

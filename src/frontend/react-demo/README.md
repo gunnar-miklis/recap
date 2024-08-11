@@ -2,6 +2,16 @@
 
 > **REACT + AXIOS + VITE**
 
+## Run (localhost)
+
+```bash
+$ yarn startFrontend1
+```
+
+```bash
+$ yarn startJsonServer # json-server (fake api)
+```
+
 ## Description
 
 ### introduce
@@ -47,24 +57,11 @@
 
 ## Dependencies
 
-- `vite`
-- `react`
-- `axios`
-- `prettier + eslint`
-
-## Run (localhost)
-
-### start json-server (fake api)
-
-```bash
-$ yarn startJsonServer
-```
-
-### start frontend
-
-```bash
-$ yarn startFrontend1
-```
+- vite
+- react
+- react-dom
+- axios
+- prettier + eslint
 
 ## Endpoints
 

@@ -2,6 +2,12 @@
 
 > Sent emails from the backend via NodeMailer.
 
+## Run (localhost)
+
+```bash
+$ yarn startBackend3
+```
+
 ## Procedure
 
 1. **Receive** data (email address of the recipient, subject and message).
@@ -26,6 +32,14 @@
 
 - Instead providing real email credentials and configs, `.createTestAccount()` can be used to mock email credentials (fake email adress and password) and set default configs (`smtp.host`, `smtp.port`), for testing purposes.
 - Those emails actually never arrive. They will only be available temporary inside the test environment provided by **[https://ethereal.email](https://ethereal.email)**.
+
+## Dependencies
+
+- express
+- nodemailer
+- morgan (request logger)
+- nodemon (testing)
+- prettier + eslint
 
 ## Endpoints
 

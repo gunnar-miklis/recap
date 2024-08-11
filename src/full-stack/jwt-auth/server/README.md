@@ -4,6 +4,12 @@
 
 Token-based authentication is stateless which means that no information is stored on the server.
 
+## Run (localhost)
+
+```bash
+$ yarn startBackend4
+```
+
 ## Procedure
 
 #### 1. Login
@@ -93,3 +99,16 @@ CampusModel.find({}, { city: 1, _id: 0 });
    - 401 JWT, Unauthorized,
    - 503 Mongoose, (connection) errors,
    - 500 Unexpected error = internal server error.
+
+## Dependencies
+
+- express
+- dotenv
+- cors
+- morgan
+- mongoose
+- bcryptjs
+- jsonwebtoken
+- express-jwt
+- nodemon
+- prettier + eslint
